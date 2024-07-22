@@ -3,18 +3,18 @@
     <div class="container d-flex justify-content-between align-items-center">
       <div class="logo">
         <h1>
-          <a href="#"><img src="/assets/img/logo3d.png" alt="" class="img-fluid" />InRaga</a>
+          <a href="/"><img src="/assets/img/logo3d.png" alt="" class="img-fluid" />InRaga</a>
         </h1>
       </div>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="{{ request()->is('/') ? 'active' : ''}}" href="/user/home">Home</a></li>
+          <li><a class="{{ request()->is('/') ? 'active' : ''}}" href="/">Home</a></li>
           <li><a class="{{ request()->is('/user/product') ? 'active' : ''}}" href="/user/product">Product
           </a></li>
           <!-- <li><a href="blog.html">Blog</a></li> -->
-          <li><a class="{{ request()->is('/gallery') ? 'active' : ''}}" href="/gallery">Gallery</a></li>
-          <li><a class="{{ request()->is('/event') ? 'active' : ''}}" href="/event">Event</a></li>
-          <li><a class="{{ request()->is('/mitra') ? 'active' : ''}}" href="/mitra">Jadi Mitra Kami</a></li>
+          <li><a class="{{ request()->is('/user/gallery') ? 'active' : ''}}" href="/user/gallery">Gallery</a></li>
+          <li><a class="{{ request()->is('/user/event') ? 'active' : ''}}" href="/user/event">Event</a></li>
+          <li><a class="{{ request()->is('/user/mitra') ? 'active' : ''}}" href="/user/mitra">Jadi Mitra Kami</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Features

@@ -12,9 +12,10 @@ use App\Models\LapanganHarga;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('user.home');
+})->name('home');
+
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -27,8 +28,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/user/sewa', [LandingController::class, 'index'])->name('user.sewa');
 Route::get('/sewa/lapangan', [LandingController::class, 'detail'])->name('user.lapangan');
 
-Route::get('/user/home', function () {return view('user.home');})->name('user.home');
+// view non controller
 Route::get('/user/product', function () {return view('user.page.product');})->name('user.page.product');
+Route::get('/user/gallery', function () {return view('user.page.gallery');})->name('user.page.gallery');
+Route::get('/user/event', function () {return view('user.page.event');})->name('user.page.event');
+Route::get('/user/mitra', function () {return view('user.page.mitra');})->name('user.page.mitra');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:0')->group(function () {
@@ -52,7 +56,3 @@ Route::middleware('auth')->group(function () {
         Route::get('/superadmin/home', function () {return view('superadmin.home');})->name('superadmin.home');
     });
 });
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
