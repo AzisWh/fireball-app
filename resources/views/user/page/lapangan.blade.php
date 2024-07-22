@@ -30,7 +30,7 @@
   </section>  
 
 
-  <section class="section">
+  <section class="section mt-5">
     <div class="container">
       
       @if (count($detail))

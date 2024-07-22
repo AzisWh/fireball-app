@@ -30,13 +30,13 @@
     </div>
   </section>  
 
-  <section class="section pb-0 mb-5">
+  <section class="section pb-0 my-5">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-5  me-auto">
         <h2 class="mb-5" style="font-size: 50px;">ragaRent</h2>
         <p class="mb-4">Persewaan lapangan olahraga di Jawa Tengah. di dalam fitur ini pelanggan dapat memesan melihat ketersedian jadwal jam sewa, melihat review dari pengguna serta sewa lapangan sesuai dengan keinginan yang dilakukan secara online menggunakan transaksi digital.</p>
-        <a href="#download"><button type="button" class="btn btn-primary">Download</button></a>
+        <a href="/user/sewa"><button type="button" class="btn btn-primary">Try Features</button></a>
       </div>
       <div class="col-md-5 justify-content-center text-center" data-aos="fade-left">
         <img src="/assets/img/product/ragaRent.jpg" width="50%" alt="Image" class="img-fluid" style="border-radius: 15px;">

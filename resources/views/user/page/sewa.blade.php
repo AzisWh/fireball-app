@@ -30,11 +30,11 @@
   </section>  
 
 
-  <div class="container mt-3">
+  <div class="container mt-5">
     <div class="row">
         @if (count($katlap)>0)
         @foreach ($katlap as $item)
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="fade-up">
                 <a href="{{ route("user.lapangan")}}?kategori_id={{$item->id}}">
                 <div class="card mb-4">
                     <div class="card-body">

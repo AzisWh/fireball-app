@@ -20,8 +20,12 @@
             <input type="text" name="nama_lapangan" class="form-control" value="{{ $lapangan->nama_lapangan }}" required>
         </div>
         <div class="form-group">
-            <label for="kategori_lapangan">Kategori Lapangan</label>
-            <input type="text" name="kategori_lapangan" class="form-control" value="{{ $lapangan->kategori_lapangan }}" required>
+            <label for="jenis_id">Kategori Lapangan</label>
+            <select name="jenis_id" class="form-control" required>
+                @foreach($jenislap as $item)
+                <option value="{{ $item->id }}" {{ $lapangan->jenis_id == $item->id ? 'selected' : '' }}>{{ $item->jenis_lapangan }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="jumlah_lapangan">Jumlah Lapangan</label>

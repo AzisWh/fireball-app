@@ -56,7 +56,7 @@ class LapanganController extends Controller
     {
         $mitras = Mitra::all();
         $jenislap = KategoriLapangan::all();
-        return view('admin.lapangan.edit', compact('lapangan', 'mitras'));
+        return view('admin.lapangan.edit', compact('lapangan', 'mitras','jenislap'));
     }
 
     public function update(Request $request, Lapangan $lapangan)
@@ -77,6 +77,10 @@ class LapanganController extends Controller
 
     public function destroy(Lapangan $lapangan)
     {
+        // Hapus data terkait di tabel lapangan_tempats
+        $lapangan->lapanganTempats()->delete();
+        
+        // Hapus data lapangan
         $lapangan->delete();
 
         return redirect()->route('lapangan.index')->with('success', 'Lapangan deleted successfully.');

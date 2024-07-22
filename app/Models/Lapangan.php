@@ -32,4 +32,9 @@ class Lapangan extends Model
     {
         return $this->hasMany(LapanganHarga::class, 'id');
     }
+
+    public function lapanganTempats()
+    {
+        return $this->hasMany(LapanganTempat::class, 'id');
+    }
 }

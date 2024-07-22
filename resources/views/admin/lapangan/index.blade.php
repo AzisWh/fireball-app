@@ -25,7 +25,7 @@
     <tbody>
         @foreach ($lapangans as $lapangan)
         <tr>
-            <td>{{ $lapangan->id }}</td>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $lapangan->nama_lapangan }}</td>
             <td>{{ $lapangan->kategori ? $lapangan->kategori->jenis_lapangan : 'N/A' }}</td>
             <td>{{ $lapangan->lokasi_lapangan }}</td>
