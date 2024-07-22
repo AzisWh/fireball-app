@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/assets/img/iconInraga.png" rel="icon">
+  <link href="{{ asset('/assets/img/iconInraga.png') }}" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -32,6 +32,24 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 </head>
+
+<style>
+    .divider:after,
+    .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+    }
+    .h-custom {
+    height: calc(100% - 73px);
+    }
+    @media (max-width: 450px) {
+    .h-custom {
+    height: 100%;
+    }
+}
+</style>
 
 <body>
 

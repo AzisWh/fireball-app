@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0">
           <!-- <h3>Dapatkan Aplikasinya</h3> -->
-          <a id="download"  href="https://play.google.com/store/apps/details?id=com.inraga.inraga" target="_blank"><img src="assets/img/google-play-badge.png" alt="" width="230px"></a>
+          <a id="download"  href="https://play.google.com/store/apps/details?id=com.inraga.inraga" target="_blank"><img src="/assets/img/google-play-badge.png" alt="" width="230px"></a>
         </div>
         <div class="col-md-8 ms-auto">
           <div class="row site-section pt-0">
