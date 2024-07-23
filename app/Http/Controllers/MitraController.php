@@ -13,6 +13,12 @@ class MitraController extends Controller
         return view('admin.mitra.index', compact('mitras'));
     }
 
+    public function showMitra(Mitra $mitra){
+
+        $mitra = Mitra::all();
+        return view('user.page.mitra', compact('mitra'));
+    }
+
     public function create()
     {
         return view('admin.mitra.create');

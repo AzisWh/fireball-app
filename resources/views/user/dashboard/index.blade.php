@@ -37,6 +37,7 @@
             <h1 class="h2">Transaksi Lapangan</h1>
         </div>
         
+        @if ($transaksis->isEmpty())
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -49,22 +50,45 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($transaksis as $d)
+               
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $d->invoice }}</td>
-                    <td>{{ $d->tanggal_booking }}</td>
-                    <td>{{ 'Rp. '.number_format($d->total_harga) }}</td>
-                    <td>{{ $d->status }}</td>
                     <td>
-                        @if($d->status === 'PENDING')
-                            <a target="__blank" href="{{ $d->link }}" class="btn btn-sm btn-warning">Bayar Sekarang</a>
-                        @endif
+                        <p>Belum Ada Transaksi</p>
                     </td>
                 </tr>
-                @endforeach
+               
             </tbody>
         </table>
+        @else
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Invoice</th>
+                        <th>Tanggal Booking</th>
+                        <th>Total Harga</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($transaksis as $d)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $d->invoice }}</td>
+                        <td>{{ $d->tanggal_booking }}</td>
+                        <td>{{ 'Rp. '.number_format($d->total_harga) }}</td>
+                        <td>{{ $d->status }}</td>
+                        <td>
+                            @if($d->status === 'PENDING')
+                                <a target="__blank" href="{{ $d->link }}" class="btn btn-sm btn-warning">Bayar Sekarang</a>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
   </section>
 </section>

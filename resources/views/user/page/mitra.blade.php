@@ -28,16 +28,26 @@
         </div>
     </section>  
 
-    <section class="section mt-5">
-        <div class="container">
-    
-                <div class="row justify-content-center text-center">
-                    <div class="col-md-7 mb-5">
-                    <h2 class="text-black text-center">Coming Soon</h2>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere illum obcaecati inventore velit laborum earum.</p> -->
+    <section class="container mt-5">
+        <div class="row">
+            @if (count($mitra)>0)
+            @foreach ($mitra as $item)
+            <div class="col-md-4" data-aos="fade-up">
+                    <a href="#">
+                    <div class="card mb-4 shadow-lg rounded">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $item->namamitra }}</h5>
+                        </div>
                     </div>
+                </a>
+            </div>
+            @endforeach
+            @else
+                <div class="col-md-12">
+                    <h1 class="text-center fw-bold">BELUM ADA MITRA</h1>
                 </div>
-            <div class="row align-items-stretch"></div>
+            @endif
+           
         </div>
     </section>
   
