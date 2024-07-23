@@ -26,7 +26,7 @@ class LandingController extends Controller
     public function index(){
 
         $katlap = KategoriLapangan::all();
-        return view('user.page.sewa', compact('katlap'));
+        return view('user.page.rent.sewa', compact('katlap'));
     }
 
     public function detail(){
@@ -36,14 +36,14 @@ class LandingController extends Controller
             $q->where('jenis_id', $kategori_id);
         })
         ->get();
-        return view('user.page.lapangan',compact('detail','kategori_name'));
+        return view('user.page.rent.lapangan',compact('detail','kategori_name'));
     }
 
     public function lapangan_jam($lapangan_id){
         $lapangan = Lapangan::find($lapangan_id);
         $tempats = LapanganTempat::where('lapangan_id', $lapangan_id)->get();
 
-        return view('user.page.sewa_lapangan', compact('lapangan', 'tempats'));
+        return view('user.page.rent.sewa_lapangan', compact('lapangan', 'tempats'));
     }
 
     public function data_jam(Request $request) {

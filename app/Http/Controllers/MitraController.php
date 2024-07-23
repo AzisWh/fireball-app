@@ -16,8 +16,14 @@ class MitraController extends Controller
     public function showMitra(Mitra $mitra){
 
         $mitra = Mitra::all();
-        return view('user.page.mitra', compact('mitra'));
+        return view('user.page.mitra.mitra', compact('mitra'));
     }
+
+    public function detail($id)
+    {
+        $mitra = Mitra::findOrFail($id);
+        return view('user.page.mitra.detail', compact('mitra'));
+    }   
 
     public function create()
     {
@@ -27,10 +33,21 @@ class MitraController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'namamitra' => 'required'
+            'namamitra' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'detail' => 'nullable|string',
+            'contact_person' => 'nullable|string'
         ]);
 
-        Mitra::create($request->all());
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $originalName = $image->getClientOriginalName();
+            $path = $image->storeAs('mitra', $originalName, 'public');
+            $input['image'] = $originalName;
+        }
+
+        Mitra::create($input);
 
         return redirect()->route('mitra.index')->with('success', 'Mitra created successfully.');
     }
@@ -43,10 +60,23 @@ class MitraController extends Controller
     public function update(Request $request, Mitra $mitra)
     {
         $request->validate([
-            'namamitra' => 'required'
+            'namamitra' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'detail' => 'nullable|string',
+            'contact_person' => 'nullable|string'
         ]);
-
-        $mitra->update($request->all());
+    
+        $input = $request->all();
+    
+        if ($image = $request->file('image')) {
+            $originalName = $image->getClientOriginalName();
+            $path = $image->storeAs('mitra', $originalName, 'public');
+            $input['image'] = $originalName;
+        } else {
+            unset($input['image']);
+        }
+    
+        $mitra->update($input);
 
         return redirect()->route('mitra.index')->with('success', 'Mitra updated successfully.');
     }

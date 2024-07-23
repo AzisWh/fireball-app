@@ -33,7 +33,7 @@
             @if (count($mitra)>0)
             @foreach ($mitra as $item)
             <div class="col-md-4" data-aos="fade-up">
-                    <a href="#">
+                <a href="{{ route('mitra.detail', $item->id) }}">
                     <div class="card mb-4 shadow-lg rounded">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->namamitra }}</h5>

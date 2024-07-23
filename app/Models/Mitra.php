@@ -11,7 +11,10 @@ class Mitra extends Model
 
     protected $fillable = [
         'id',
-        'namamitra'];
+        'namamitra',
+        'image',
+        'detail',
+        'contact_person'];
 
     public function lapangans()
     {

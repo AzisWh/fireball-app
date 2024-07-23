@@ -14,6 +14,9 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Image</th>
+            <th>Detail</th>
+            <th>Contact Person</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -22,6 +25,15 @@
         <tr>
             <td>{{ $mitra->id }}</td>
             <td>{{ $mitra->namamitra }}</td>
+            <td>
+                @if (empty($mitra->image))
+                    <img src="https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg" alt="/" class="img-thumbnail" style="width: 100px">
+                @else
+                    <img src="{{ asset('storage/' . $mitra->image) }}" class="img-thumbnail" style="width: 100px" alt="{{ $mitra->namamitra }}">
+                @endif
+            </td>
+            <td>{{ $mitra->detail }}</td>
+            <td>{{ $mitra->contact_person }}</td>
             <td>
                 <a href="{{ route('mitra.edit', $mitra->id) }}" class="btn btn-sm btn-warning">Edit</a>
                 <form action="{{ route('mitra.destroy', $mitra->id) }}" method="POST" style="display:inline;">

@@ -34,6 +34,7 @@ Route::get('/user/gallery', function () {return view('user.page.gallery');})->na
 Route::get('/user/event', function () {return view('user.page.event');})->name('user.page.event');
 // Route::get('/user/mitra', function () {return view('user.page.mitra');})->name('user.page.mitra');
 Route::get('user/mitra', [MitraController::class,'showMitra'])->name('user.mitra');
+Route::get('mitra/{id}', [MitraController::class,'detail'])->name('mitra.detail');
 Route::get('/user/battle', function () {return view('user.page.battle');})->name('user.page.battle');
 Route::get('/user/ticket', function () {return view('user.page.ticket');})->name('user.page.ticket');
 Route::get('/user/shop', function () {return view('user.page.shop');})->name('user.page.shop');
