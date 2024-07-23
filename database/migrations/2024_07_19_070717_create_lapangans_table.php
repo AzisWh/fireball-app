@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('lapangans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mitra_id')->constrained('mitras');
+            $table->foreignId('mitra_id')->constrained('mitras')->onDelete('cascade');;
             $table->string('nama_lapangan');
             $table->integer('jumlah_lapangan');
             $table->decimal('harga_lapangan_per_jamnya', 10, 2);
             $table->string('lokasi_lapangan'); 
-            $table->foreignId('jenis_id')->constrained('kategori_lapangans');
+            $table->foreignId('jenis_id')->constrained('kategori_lapangans')->onDelete('cascade');;
             $table->timestamps();
         });
     }

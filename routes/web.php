@@ -33,6 +33,10 @@ Route::get('/user/product', function () {return view('user.page.product');})->na
 Route::get('/user/gallery', function () {return view('user.page.gallery');})->name('user.page.gallery');
 Route::get('/user/event', function () {return view('user.page.event');})->name('user.page.event');
 Route::get('/user/mitra', function () {return view('user.page.mitra');})->name('user.page.mitra');
+Route::get('/user/battle', function () {return view('user.page.battle');})->name('user.page.battle');
+Route::get('/user/ticket', function () {return view('user.page.ticket');})->name('user.page.ticket');
+Route::get('/user/shop', function () {return view('user.page.shop');})->name('user.page.shop');
+Route::get('/user/trainer', function () {return view('user.page.trainer');})->name('user.page.trainer');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:0')->group(function () {

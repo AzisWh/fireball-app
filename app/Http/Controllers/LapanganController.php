@@ -77,10 +77,11 @@ class LapanganController extends Controller
 
     public function destroy(Lapangan $lapangan)
     {
-        // Hapus data terkait di tabel lapangan_tempats
-        $lapangan->lapanganTempats()->delete();
         
-        // Hapus data lapangan
+        $lapangan->lapanganTempats()->delete();
+        // $lapangan->mitra()->delete();
+        // $lapangan->kategori()->delete();
+        // $lapangan->hargaoption()->delete();
         $lapangan->delete();
 
         return redirect()->route('lapangan.index')->with('success', 'Lapangan deleted successfully.');

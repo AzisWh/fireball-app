@@ -20,7 +20,7 @@
         <div class="col-12">
             <div class="row justify-content-center">
             <div class="col-md-7 text-center hero-text">
-                <h1 data-aos="fade-up"  data-aos-delay="">Lapangan Page</h1>
+                <h1 data-aos="fade-up"  data-aos-delay="">Lapangan Sewa</h1>
                 <!-- <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
             </div>
             </div>
@@ -43,7 +43,7 @@
               <div class="col-md-4 col-sm-6">
                 <a href="{{ route('user.lapangan_jam', $item->id) }}">
                     <div class="card mx-auto" style="width: 24rem;">
-                        <img src="{{ asset('assets/img/event/poster.jpeg') }}" class="card-img-top" alt="...">
+                        {{-- <img src="{{ asset('assets/img/event/poster.jpeg') }}" class="card-img-top" alt="..."> --}}
                         <div class="card-body">
                             <p>Nama Mitra : {{$item->mitra->namamitra}}</p>
                             <h5 class="card-title">Nama Lapangan : {{$item->nama_lapangan}}</h5>

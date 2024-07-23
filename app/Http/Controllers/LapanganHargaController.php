@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriLapangan;
 use App\Models\Lapangan;
 use App\Models\LapanganHarga;
 use App\Models\LapanganTempat;
@@ -41,7 +42,8 @@ class LapanganHargaController extends Controller
     public function edit(LapanganHarga $hargalap)
     {
         $lapangans = Lapangan::all();
-        return view('admin.hargalap.edit', compact('hargalap'));
+        $jenislap = LapanganTempat::all();
+        return view('admin.hargalap.edit', compact('hargalap', 'jenislap'));
     }
 
     public function update(Request $request, LapanganHarga $hargalap)

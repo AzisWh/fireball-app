@@ -21,10 +21,10 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item {{ request()->is('/user/sewa') ? 'active' : ''}}" href="/user/sewa">Raga Rent</a></li>
-              <li><a class="dropdown-item" href="#">Raga Battle</a></li>
-              <li><a class="dropdown-item" href="#">Raga Ticket</a></li>
-              <li><a class="dropdown-item" href="#">Raga Shop</a></li>
-              <li><a class="dropdown-item" href="#">Raga Trainer</a></li>
+              <li><a class="dropdown-item {{ request()->is('/user/battle') ? 'active' : ''}}" href="/user/battle">Raga Battle</a></li>
+              <li><a class="dropdown-item {{ request()->is('/user/ticket') ? 'active' : ''}}" href="/user/ticket">Raga Ticket</a></li>
+              <li><a class="dropdown-item {{ request()->is('/user/shop') ? 'active' : ''}}" href="/user/shop">Raga Shop</a></li>
+              <li><a class="dropdown-item {{ request()->is('/user/trainer') ? 'active' : ''}}" href="/user/trainer">Raga Trainer</a></li>
             </ul>
           </li>
               @if (auth()->check())

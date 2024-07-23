@@ -10,8 +10,8 @@
         <div class="form-group">
             <label for="lapangan_id">Lapangan</label>
             <select name="lapangan_id" class="form-control" required>
-                @foreach($hargalap as $item)
-                <option value="{{ $item->id }}" {{ $item->lapangan_id == $item->id ? 'selected' : '' }}>{{ $item->nama_lapangan }}</option>
+                @foreach($jenislap as $item)
+                <option value="{{ $item->id }}" {{ $item->lapangan->nama_lapangan ? 'selected' : '' }}>{{ $item->nama_tempat }}</option>
                 @endforeach
             </select>
         </div>
