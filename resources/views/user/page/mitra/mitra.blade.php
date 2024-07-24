@@ -30,13 +30,27 @@
 
     <section class="container mt-5">
         <div class="row">
+            <h4 data-aos="fade-up" class="mb-5">Cp Inraga (Enzo) : 
+                <span>
+                    <a href="https://wa.me/6282137266904" target="_blank">+62 821-3726-6904</a>
+                </span>
+            </h4>
+            <h4 data-aos="fade-up">Mitra Kami</h4>
             @if (count($mitra)>0)
             @foreach ($mitra as $item)
             <div class="col-md-4" data-aos="fade-up">
                 <a href="{{ route('mitra.detail', $item->id) }}">
-                    <div class="card mb-4 shadow-lg rounded">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->namamitra }}</h5>
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">{{ $item->namamitra }}</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                @if ($item->image)
+                                    <img src="{{ asset('storage/mitra/' . $item->image) }}" class="img-fluid " style="width: 150px" alt="{{ $item->namamitra }}">
+                                @else
+                                    <p class="text-center">Gambar belum tersedia</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </a>

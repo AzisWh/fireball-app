@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mitras', function (Blueprint $table) {
-            $table->id();
-            $table->string('namamitra');
-            $table->string('image')->nullable();
-            $table->text('detail')->nullable();
-            $table->string('contact_person')->nullable();
-            $table->timestamps();
+        Schema::table('transaksi_lapangans', function (Blueprint $table) {
+            $table->decimal('total_harga', 15, 2)->change();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mitras');
+        Schema::table('transaksi_lapangans', function (Blueprint $table) {
+            $table->float('total_harga')->change();
+        });
     }
 };

@@ -10,25 +10,24 @@
             <div class="col-md-4 mb-4 mb-md-0">
               <h3>Bantuan</h3>
               <ul class="list-unstyled">
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-                <li><a href="/syaratKetentuan">Syarat dan Ketentuan</a></li>
-                <li><a href="/kebijakanPrivasi">Kebijakan Privasi</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Syarat dan Ketentuan</a></li>
+                <li><a href="#">Kebijakan Privasi</a></li>
               </ul>
             </div>
             <div class="col-md-4 mb-4 mb-md-0">
               <h3>Mitra</h3>
               <ul class="list-unstyled">
-                <li><a href="/mitra">Merchant</a></li>
-                <li><a href="/partnership">Partnership</a></li>
+                <li><a href="#">Merchant</a></li>
+                <li><a href="/user/mitra">Partnership</a></li>
               </ul>
             </div>
             <div class="col-md-4 mb-4 mb-md-0">
               <h3>Ikuti Kami</h3>
               <ul class="list-unstyled">
                 <li><a href="https://www.instagram.com/inraga.id/" target="_blank">Instagram</a></li>
-                <li><a href="#" target="_blank">Facebook</a></li>
-                <li><a href="#" target="_blank">Twitter</a></li>
+                <li><a href="https://www.facebook.com/share/QYxrihZFzPBG2r5s/?mibextid=qi2Omg" target="_blank">Facebook</a></li>
                 <li><a href="https://www.linkedin.com/company/inraga/" target="_blank">Linkedin</a></li>
               </ul>
             </div>

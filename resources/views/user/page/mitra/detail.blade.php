@@ -35,7 +35,7 @@
             @else
                 <div class="col-md-8 d-flex justify-content-center mb-5">
                     @if ($mitra->image)
-                        <img src="{{ asset('storage/' . $mitra->image) }}" class="img-fluid" alt="{{ $mitra->namamitra }}">
+                        <img src="{{ asset('storage/mitra/' . $mitra->image) }}" class="img-fluid" style="width: 300px" alt="{{ $mitra->namamitra }}">
                     @else
                         <p class="text-center">Gambar belum tersedia</p>
                     @endif
@@ -46,10 +46,10 @@
                     <h4>Contact Person: 
                         @if ($mitra->contact_person)
                             <span>
-                                <a href="https://wa.me/{{ $mitra->contact_person }}" target="_blank">+{{ $mitra->contact_person }}</a>
+                                <a href="https://wa.me/{{ $mitra->contact_person }}" target="_blank">{{ $mitra->contact_person }}</a>
                             </span> 
                         @else
-                            <span>Contact person belum tersedia</span>
+                            <span>(Contact person belum tersedia)</span>
                         @endif
                     </h4>
                 </div>  

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('external_id');
             $table->foreignId('user_id')->constrained('users');
             $table->date('tanggal_booking');
-            $table->float('total_harga');
+            // $table->float('total_harga', 15, 2);
+            $table->decimal('total_harga', 16, 2);
             $table->string('status');
             $table->string('link');
             $table->timestamps();

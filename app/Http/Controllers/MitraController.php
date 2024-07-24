@@ -83,8 +83,10 @@ class MitraController extends Controller
 
     public function destroy(Mitra $mitra)
     {
+        $mitra->lapangans()->delete();
         $mitra->delete();
 
+        
         return redirect()->route('mitra.index')->with('success', 'Mitra deleted successfully.');
     }
 }

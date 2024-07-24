@@ -118,6 +118,7 @@ class LandingController extends Controller
 
         // XENDIT REQUEST
         $apiInstance = new InvoiceApi();
+        // dd($total_harga + 4000);
         $create_invoice_request = new CreateInvoiceRequest([
             'external_id' => $transaksi->external_id,
             'description' => $transaksi->invoice,
@@ -129,7 +130,7 @@ class LandingController extends Controller
         $result_xendit = $apiInstance->createInvoice($create_invoice_request);
 
         TransaksiLapangan::where('id', $transaksi->id)->update([
-            'total_harga' => $total_harga,
+            'total_harga' => $total_harga + 4000,
             'link' => $result_xendit['invoice_url'],
         ]);
         TransaksiLapanganDetail::insert($detail);
