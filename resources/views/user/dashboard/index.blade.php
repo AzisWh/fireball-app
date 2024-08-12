@@ -77,7 +77,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $d->invoice }}</td>
                         <td>{{ $d->tanggal_booking }}</td>
-                        <td>{{ 'Rp. '.number_format($d->total_harga + 4000) }}</td>
+                        <td>{{ 'Rp. '.number_format($d->total_harga ) }}</td>
                         <td>{{ $d->status }}</td>
                         <td>
                             @if($d->status === 'PENDING')
