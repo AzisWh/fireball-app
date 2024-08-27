@@ -32,6 +32,18 @@
                     Harga Lapangan
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('events.index') }}">
+                    <span data-feather="shopping-cart"></span>
+                    Event
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('events.registeredUsers') }}">
+                    <span data-feather="users"></span>
+                    Registered Users
+                </a>
+            </li>
             <!-- Add more links as needed -->
         </ul>
     </div>

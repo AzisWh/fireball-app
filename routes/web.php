@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardUser;
+use App\Http\Controllers\EventActivityController;
+use App\Http\Controllers\EventAdminController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LapanganController;
 use App\Http\Controllers\LapanganHargaController;
 use App\Http\Controllers\LapanganKatController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\RegistrationController;
 use App\Models\KategoriLapangan;
 use App\Models\LapanganHarga;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +35,8 @@ Route::get('/sewa/lapangan', [LandingController::class, 'detail'])->name('user.l
 // view non controller
 Route::get('/user/product', function () {return view('user.page.product');})->name('user.page.product');
 Route::get('/user/gallery', function () {return view('user.page.gallery');})->name('user.page.gallery');
-Route::get('/user/event', function () {return view('user.page.event');})->name('user.page.event');
+// Route::get('/user/event', function () {return view('user.page.event');})->name('user.page.event');
+Route::get('/user/event',[EventController::class,'index'])->name('user.page.event.event');
 // Route::get('/user/mitra', function () {return view('user.page.mitra');})->name('user.page.mitra');
 Route::get('user/mitra', [MitraController::class,'showMitra'])->name('user.mitra');
 Route::get('mitra/{id}', [MitraController::class,'detail'])->name('mitra.detail');
@@ -47,18 +52,24 @@ Route::middleware('auth')->group(function () {
         Route::post('/sewa/lapangan/pesan', [LandingController::class, 'pesan'])->name('user.pesan');
         Route::get('/sewa/lapangan/jam/{lapangan_id}', [LandingController::class, 'lapangan_jam'])->name('user.lapangan_jam');
         Route::get('user/dashboard', [DashboardUser::class, 'index'])->name('user.dashboard');
+        Route::post('activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
+        Route::delete('activities/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
     });
 
     Route::middleware('role:1')->group(function () {
-        Route::get('/admin/home', function () {return view('admin.home');})->name('admin.home');
+        Route::get('/dashmin/home', function () {return view('admin.home');})->name('admin.home');
 
         Route::resource('admin/mitra', MitraController::class);
         Route::resource('admin/lapangan', LapanganController::class);
         Route::resource('admin/katlap', LapanganKatController::class);
         Route::resource('admin/hargalap', LapanganHargaController::class);
+        Route::resource('events', EventAdminController::class);
+        Route::resource('events.activities', EventActivityController::class);
+        Route::get('/admin/events/registered-users', [EventAdminController::class, 'registeredUsers'])->name('events.registeredUsers');
+        Route::delete('/admin/registrations/{id}', [EventAdminController::class, 'destroyRegistration'])->name('admin.registrations.destroy');
     });
 
     Route::middleware('role:2')->group(function () {
-        Route::get('/superadmin/home', function () {return view('superadmin.home');})->name('superadmin.home');
+        Route::get('/superdashmin/home', function () {return view('superadmin.home');})->name('superadmin.home');
     });
 });
