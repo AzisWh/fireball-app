@@ -84,6 +84,6 @@ class AuthController extends Controller
         Auth::login($user);
 
         Alert::success('Hore!', 'Registrasi berhasil');
-        return redirect()->route('user.home');
+        return redirect()->route('home');
     }
 }
