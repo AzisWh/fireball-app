@@ -15,7 +15,13 @@ class EventActivityController extends Controller
 
     public function store(Request $request, Event $event)
     {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'nullable|numeric' 
+        ]);
+    
         $event->activities()->create($request->all());
+    
         return redirect()->route('events.show', $event);
     }
 
@@ -26,7 +32,13 @@ class EventActivityController extends Controller
 
     public function update(Request $request, Event $event, Activity $activity)
     {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'nullable|numeric' 
+        ]);
+    
         $activity->update($request->all());
+    
         return redirect()->route('events.show', $event);
     }
 

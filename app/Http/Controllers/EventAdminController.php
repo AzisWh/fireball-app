@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventAdminController extends Controller
 {
@@ -20,8 +21,23 @@ class EventAdminController extends Controller
 
     public function store(Request $request)
     {
-        $event = Event::create($request->all());
-        return redirect()->route('events.index', compact('event'));
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
+    
+        if($request->hasFile('image')) {
+            $originalName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('BattleImage', $originalName, 'public');
+            $validated['image'] = $path;
+        }
+    
+        $event = Event::create($validated);
+    
+        return redirect()->route('events.index', compact('event'))->with('success', 'Event created successfully.');
     }
 
     public function show(Event $event)
@@ -34,15 +50,29 @@ class EventAdminController extends Controller
         return view('admin.event.edit', compact('event'));
     }
 
-    public function update(Request $request, Event $event)
+    public function update(Request $request, string $id)
     {
+        $event = Event::findOrFail($id);
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'required|string',
+            'description' => 'nullable|required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
         ]);
 
+        if($request->hasFile('image')) {
+            //Hapus gambar lama jika ada
+            if ($event->image && Storage::disk('public')->exists($event->image)) {
+                Storage::disk('public')->delete($event->image);
+            }
+
+            $originalName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('PaketJasa', $originalName, 'public');
+            $validated['image'] = $path;
+        }
+    
         $event->update($validated);
 
         return redirect()->route('events.index')->with('success', 'Event updated successfully.');
@@ -52,7 +82,7 @@ class EventAdminController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect()->route('admin.event.index');
+        return redirect()->route('events.index');
     }
 
     public function registeredUsers()

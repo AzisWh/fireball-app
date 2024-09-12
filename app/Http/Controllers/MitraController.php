@@ -78,7 +78,7 @@ class MitraController extends Controller
     
         $mitra->update($input);
 
-        return redirect()->route('mitra.index')->with('success', 'Mitra updated successfully.');
+            
     }
 
     public function destroy(Mitra $mitra)

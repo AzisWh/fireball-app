@@ -71,6 +71,18 @@
         </div>
     </section>
 
+    <section class="section">
+        <div class="container">
+            <div class="filterSearch">
+                <p style="margin-top: 20px; color: #000; font-size:24px;">Finished Events</p>
+            </div>
+
+            <div class="row">
+                
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('scripts')

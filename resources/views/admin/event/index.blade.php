@@ -13,6 +13,8 @@
         <tr>
             <th>ID</th>
             <th>Nama Event</th>
+            <th>Deskripsi</th>
+            <th>Image</th>
             <th>Tanggal Mulai</th>
             <th>Tanggal Selesai</th>
             <th>Action</th>
@@ -23,6 +25,10 @@
         <tr>
             <td>{{ $event->id }}</td>
             <td>{{ $event->name }}</td>
+            <td>{{ $event->description }}</td>
+            <td>
+                <img src="{{ $event->image ? asset('storage/'.$event->image) : asset('landing/img/blog-1.jpg') }}" alt="{{$event->name}}" style="width: 300px">
+            </td>
             <td>{{ $event->start_date }}</td>
             <td>{{ $event->end_date }}</td>
             <td>

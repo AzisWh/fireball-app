@@ -46,6 +46,10 @@
                             <hr>
                             <div class="d-flex justify-content-center">
                                 @if ($item->image)
+                                    {{-- @php
+                                        $imagePath = Storage::url('mitra/' . $item->image);
+                                    @endphp
+                                    <img src="{{$imagePath}}" class="img-fluid " style="width: 150px" alt="{{ $item->namamitra }}"> --}}
                                     <img src="{{ asset('storage/mitra/' . $item->image) }}" class="img-fluid " style="width: 150px" alt="{{ $item->namamitra }}">
                                 @else
                                     <p class="text-center">Gambar belum tersedia</p>

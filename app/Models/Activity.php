@@ -9,7 +9,7 @@ class Activity extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'event_id'];
+    protected $fillable = ['name', 'description', 'event_id','price',];
 
     public function event()
     {

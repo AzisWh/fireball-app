@@ -20,30 +20,36 @@ Route::get('/', function () {
     return view('user.home');
 })->name('home');
 
-
+// auth
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
 // view
 Route::get('/user/sewa', [LandingController::class, 'index'])->name('user.sewa');
 Route::get('/sewa/lapangan', [LandingController::class, 'detail'])->name('user.lapangan');
-
-// view non controller
-Route::get('/user/product', function () {return view('user.page.product');})->name('user.page.product');
-Route::get('/user/gallery', function () {return view('user.page.gallery');})->name('user.page.gallery');
-// Route::get('/user/event', function () {return view('user.page.event');})->name('user.page.event');
-Route::get('/user/event',[EventController::class,'index'])->name('user.page.event.event');
-// Route::get('/user/mitra', function () {return view('user.page.mitra');})->name('user.page.mitra');
+Route::get('/user/battle',[EventController::class,'index'])->name('user.page.battle.battle');
 Route::get('user/mitra', [MitraController::class,'showMitra'])->name('user.mitra');
 Route::get('mitra/{id}', [MitraController::class,'detail'])->name('mitra.detail');
-Route::get('/user/battle', function () {return view('user.page.battle');})->name('user.page.battle');
-Route::get('/user/ticket', function () {return view('user.page.ticket');})->name('user.page.ticket');
-Route::get('/user/shop', function () {return view('user.page.shop');})->name('user.page.shop');
-Route::get('/user/trainer', function () {return view('user.page.trainer');})->name('user.page.trainer');
+
+// view non controller
+Route::get('/user/product', function () {
+    return view('user.page.product');
+})->name('user.page.product');
+Route::get('/user/gallery', function () {
+    return view('user.page.gallery');
+})->name('user.page.gallery');
+Route::get('/user/ticket', function () {
+    return view('user.page.ticket');
+})->name('user.page.ticket');
+Route::get('/user/shop', function () {
+    return view('user.page.shop');
+})->name('user.page.shop');
+Route::get('/user/trainer', function () {
+    return view('user.page.trainer');
+})->name('user.page.trainer');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:0')->group(function () {
@@ -54,6 +60,8 @@ Route::middleware('auth')->group(function () {
         Route::get('user/dashboard', [DashboardUser::class, 'index'])->name('user.dashboard');
         Route::post('activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
         Route::delete('activities/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
+
+
     });
 
     Route::middleware('role:1')->group(function () {

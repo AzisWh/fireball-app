@@ -63,11 +63,17 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        $messages = [
+            'email.unique' => 'Email ini sudah pernah didaftarkan, silakan gunakan email lain.',
+            'password.min' => 'Password harus terdiri dari minimal 8 karakter.',
+            'password.confirmed' => 'Password dan konfirmasi password tidak sama.',
+        ];
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             Alert::error('Gagal', 'Registrasi gagal, silakan cek kembali data yang Anda masukkan.');
