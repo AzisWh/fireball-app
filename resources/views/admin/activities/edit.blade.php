@@ -13,8 +13,12 @@
             <input type="text" class="form-control" id="name" name="name" value="{{ $activity->name }}" required>
         </div>
         <div class="mb-3">
-            <label for="price" class="form-label">Harga Activity</label>
-            <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ $activity->price }}">
+            <label for="price" class="form-label">Harga </label>
+            <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ $activity->price }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="slot" class="form-label">Jumlah Tim/Player</label>
+            <input type="number"  class="form-control" id="slot" name="slot" value="{{ $activity->slot }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

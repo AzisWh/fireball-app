@@ -17,7 +17,8 @@ class EventActivityController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'nullable|numeric' 
+            'price' => 'nullable|numeric',
+            'slot' => 'required|integer', 
         ]);
     
         $event->activities()->create($request->all());
@@ -34,7 +35,8 @@ class EventActivityController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'nullable|numeric' 
+            'price' => 'nullable|numeric',
+            'slot' => 'required|integer', 
         ]);
     
         $activity->update($request->all());

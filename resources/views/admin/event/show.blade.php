@@ -12,7 +12,7 @@
     <ul class="list-group mt-3">
         @foreach ($event->activities as $activity)
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ $activity->name }}
+                {{ $activity->name }} - Price ( {{$activity->price}} ) - Jumlah Tim ( {{ $activity->slot }} )
                 <div>
                     <a href="{{ route('events.activities.edit', [$event->id, $activity->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                     <form action="{{ route('events.activities.destroy', [$event->id, $activity->id]) }}" method="POST" style="display:inline;">
