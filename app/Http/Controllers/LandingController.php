@@ -138,4 +138,6 @@ class LandingController extends Controller
 
         return redirect()->route('user.dashboard')->with('success', 'Berhasil melakukan pemesanan jam');
     }
+
+    
 }

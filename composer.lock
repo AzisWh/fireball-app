@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bda2ce7c9366b65ba7f29898aaea1cf",
+    "content-hash": "21b5f5a34aeb156981e9c57023ae3468",
     "packages": [
         {
             "name": "brick/math",
@@ -5768,16 +5768,16 @@
         },
         {
             "name": "xendit/xendit-php",
-            "version": "5.0.0",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/xendit/xendit-php.git",
-                "reference": "315f6412c9427233cfe98f7eb3645654a83f5e70"
+                "reference": "0ff74164fd7730481297b37d25e6466e5a466585"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xendit/xendit-php/zipball/315f6412c9427233cfe98f7eb3645654a83f5e70",
-                "reference": "315f6412c9427233cfe98f7eb3645654a83f5e70",
+                "url": "https://api.github.com/repos/xendit/xendit-php/zipball/0ff74164fd7730481297b37d25e6466e5a466585",
+                "reference": "0ff74164fd7730481297b37d25e6466e5a466585",
                 "shasum": ""
             },
             "require": {
@@ -5822,9 +5822,9 @@
             ],
             "support": {
                 "issues": "https://github.com/xendit/xendit-php/issues",
-                "source": "https://github.com/xendit/xendit-php/tree/5.0.0"
+                "source": "https://github.com/xendit/xendit-php/tree/6.0.0"
             },
-            "time": "2024-04-01T03:39:38+00:00"
+            "time": "2024-08-15T06:16:23+00:00"
         }
     ],
     "packages-dev": [

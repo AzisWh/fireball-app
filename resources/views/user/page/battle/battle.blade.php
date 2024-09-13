@@ -42,6 +42,7 @@
                                     <div class="activity mb-3">
                                         <h5>{{ $activity->name }}</h5>
                                         <p>{{ $activity->description }}</p>
+                                        <p>sisa slot : {{ $activity->slot }} tim</p>
                                         <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>
                                         
                                         @if(auth()->check())

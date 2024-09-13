@@ -13,7 +13,6 @@
           </a></li>
           <!-- <li><a href="blog.html">Blog</a></li> -->
           <li><a class="{{ request()->is('/user/gallery') ? 'active' : ''}}" href="/user/gallery">Gallery</a></li>
-          <li><a class="{{ request()->is('/user/event') ? 'active' : ''}}" href="/user/event">Event</a></li>
           <li><a class="{{ request()->is('/user/mitra') ? 'active' : ''}}" href="/user/mitra">Jadi Mitra Kami</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
