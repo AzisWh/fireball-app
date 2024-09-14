@@ -19,7 +19,8 @@ class BattleTransaksi extends Model
         'status', 
         'form_text', 
         'form_image', 
-        'payment_date'
+        'payment_date',
+        'invoice_url'
     ];
 
     public function user()

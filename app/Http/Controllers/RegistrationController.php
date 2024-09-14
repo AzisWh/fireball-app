@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\BattleTransaksi;
 use App\Models\Registration;
+use App\Models\TransaksiLapangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Xendit\Configuration;
 use Xendit\Xendit;
+use Xendit\Invoice\CreateInvoiceRequest;
+use Xendit\Invoice\InvoiceItem;
+use Xendit\Invoice\InvoiceApi;
 
 
 class RegistrationController extends Controller
@@ -38,64 +42,123 @@ class RegistrationController extends Controller
         return redirect()->route('user.page.battle.battle', $activity->id);
     }
     
-    // public function showPaymentForm(Activity $activity)
-    // {
-    //     return view('user.payment', compact('activity'));
-    // }
+    public function showPaymentForm(Activity $activity)
+    {
+        return view('user.payment', compact('activity'));
+    }
 
-    // public function processPayment(Request $request, Activity $activity)
-    // {
-    //     // Validate the form input
-    //     $request->validate([
-    //         'form_text' => 'required|string',
-    //         'form_image' => 'required|image|max:2048', // Max 2MB
-    //     ]);
+    public function __construct()
+    {
+        Configuration::setXenditKey(env('XENDIT_API_KEY'));
+    }
 
-    //     // Store the uploaded image
-    //     $form_image_path = $request->file('form_image')->store('form_images', 'public');
+    public function processPayment(Request $request, Activity $activity)
+    {
+        $request->validate([
+            'form_text' => 'required|string',
+            'form_image' => 'required|image|max:5000'
+        ]);
 
-    //     // Create invoice in database
-    //     $invoice = BattleTransaksi::create([
-    //         'user_id' => Auth::id(),
-    //         'activity_id' => $activity->id,
-    //         'amount' => $activity->price,
-    //         'form_text' => $request->input('form_text'),
-    //         'form_image' => $form_image_path,
-    //     ]);
+        $from_image_path = $request->file('form_image')->store('form_images', 'public');
 
-    //     // Call Xendit API to create invoice (payment)
-    //     $params = [
-    //         'external_id' => 'invoice_' . $invoice->id,
-    //         'amount' => $invoice->amount,
-    //         'payer_email' => Auth::user()->email,
-    //         'description' => 'Payment for ' . $activity->name,
-    //     ];
+        $external_id = 'Inv-' . rand();
 
-    //     $xenditInvoice = \Xendit\Invoice::create($params);
+        $invoice = new CreateInvoiceRequest([
+            'external_id' => $external_id,
+            'amount' => $activity->price,
+            'invoice_duration' => 172800,
+            'customer_email' => Auth::user()->email,
+        ]);
 
-    //     // Update invoice with external_id and payment URL
-    //     $invoice->update([
-    //         'external_id' => $xenditInvoice['id'],
-    //     ]);
+        try {
+            $apiInstance = new InvoiceApi();
+            $generateInvoice = $apiInstance->createInvoice($invoice);
 
-    //     // Redirect to Xendit payment page
-    //     return redirect($xenditInvoice['invoice_url']);
-    // }
+            $invoiceUrl = $generateInvoice->getInvoiceUrl();
 
-    // public function paymentCallback(Request $request)
-    // {
-    //     // Handle the payment callback from Xendit
-    //     $invoice = BattleTransaksi::where('external_id', $request->external_id)->first();
+            BattleTransaksi::create([
+                'user_id' => Auth::id(),
+                'activity_id' => $activity->id,
+                'amount' => $activity->price,
+                'external_id' => $external_id,
+                'form_text' => $request->input('form_text'),
+                'form_image' => $from_image_path,
+                'invoice_url' => $invoiceUrl
+            ]);
 
-    //     if ($request->status === 'PAID') {
-    //         $invoice->update([
-    //             'status' => 'PAID',
-    //             'payment_date' => now(),
-    //         ]);
-    //     }
+            // dd(BattleTransaksi::create([
+            //     'user_id' => Auth::id(),
+            //     'activity_id' => $activity->id,
+            //     'amount' => $activity->price,
+            //     'extrernal_id' => $external_id,
+            //     'form_text' => $request->input('form_text'),
+            //     'form_image' => $from_image_path,
+            //     'invoice_url' => $invoiceUrl
+            // ]));
 
-    //     return response()->json(['status' => 'success']);
-    // }
+            return redirect($invoiceUrl);
+
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'status' => 'error',
+                    'code' => 500,
+                    'message' => 'Failed to create invoice',
+                    'errors' => $th->getMessage(),
+                ],
+                500
+            );
+        }
+    }
+
+
+    public function paymentCallback(Request $request)
+    {
+        // $getToken = $request->headers->get('x-callback-token');
+        $callbackToken = env('XENDIT_CALLBACK_TOKEN');
+
+        if (!$callbackToken) {
+            return response()->json(
+                [
+                    'status' => 'error',
+                    'message' => 'callback token not exist',
+                ],
+                404,
+            );
+        }
+
+        $externalId = $request->external_id;
+        $status = $request->status;
+
+        $battleTransaksi = BattleTransaksi::where('external_id', $externalId)->first();
+        if ($battleTransaksi) {
+            if ($status === 'PAID') {
+                $battleTransaksi->update([
+                    'status' => 'PAID',
+                    'payment_date' => now(),
+                ]);
+    
+                $activity = Activity::find($battleTransaksi->activity_id);
+    
+                if ($activity && $activity->slot > 0) {
+                    $activity->decrement('slot');
+                }
+    
+                return response()->json(['status' => 'success', 'message' => 'Battle transaction updated successfully']);
+            }
+        }
+
+        $transaksiLapangan = TransaksiLapangan::where('external_id', $externalId)->first();
+        if ($transaksiLapangan) {
+            $transaksiLapangan->update([
+                'status' => $status,
+            ]);
+            return response()->json(['status' => 'success', 'message' => 'Field transaction updated successfully']);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Transaction not found'], 404);
+    }
+
 
     public function unregister(Activity $activity)
     {

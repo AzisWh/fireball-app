@@ -50,7 +50,7 @@
                                                 $isRegistered = $activity->registrations && $activity->registrations->contains('user_id', auth()->id());
                                             @endphp
 
-                                            <form action="{{ route('activities.register', $activity->id) }}" method="POST">
+                                            <form action="{{ route('activity.payment', $activity->id) }}" method="GET">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary btn-sm" {{ $isRegistered ? 'disabled' : '' }}>
                                                     {{ $isRegistered ? 'Sudah Terdaftar' : 'Daftar' }}

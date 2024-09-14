@@ -16,6 +16,7 @@ use App\Models\LapanganHarga;
 use Illuminate\Support\Facades\Route;
 
 
+Route::post('payment/callback', [RegistrationController::class, 'paymentCallback'])->name('payment.callback');
 Route::get('/', function () {
     return view('user.home');
 })->name('home');
@@ -60,14 +61,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/sewa/lapangan/jam/{lapangan_id}', [LandingController::class, 'lapangan_jam'])->name('user.lapangan_jam');
         // dashboard
         Route::get('user/dashboard', [DashboardUser::class, 'index'])->name('user.dashboard');
-        Route::post('activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        Route::delete('activities/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
+        // Route::post('activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
+        // Route::delete('activities/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
 
         // ragabattle
-        // Route::post('activity/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        // Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment');
-        // Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
-        // Route::post('payment/callback', [RegistrationController::class, 'paymentCallback'])->name('payment.callback');
+        Route::post('activity/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
+        Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); // 1
+        Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
+        
         // Route::post('/activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
         // Route::get('/invoices/{invoice}', [RegistrationController::class, 'showInvoice'])->name('invoice.show');
 
