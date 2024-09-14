@@ -35,13 +35,13 @@ class RegistrationController extends Controller
         ]);
 
         // Redirect to payment page
-        return redirect()->route('activity.payment', $activity->id);
+        return redirect()->route('user.page.battle.battle', $activity->id);
     }
     
-    public function showPaymentForm(Activity $activity)
-    {
-        return view('user.payment', compact('activity'));
-    }
+    // public function showPaymentForm(Activity $activity)
+    // {
+    //     return view('user.payment', compact('activity'));
+    // }
 
     // public function processPayment(Request $request, Activity $activity)
     // {
