@@ -41,6 +41,9 @@ class AuthController extends Controller
             else if(Auth::user()->role_type==2){
                 return redirect()->route('superadmin.home');
             }
+            else if(Auth::user()->role_type==3){
+                return redirect()->route('miminussc.home');
+            }
             return redirect()->route('index');
         }
 

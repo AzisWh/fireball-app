@@ -14,7 +14,6 @@ use Xendit\Invoice\CreateInvoiceRequest;
 use Xendit\Invoice\InvoiceItem;
 use Xendit\Invoice\InvoiceApi;
 
-
 class RegistrationController extends Controller
 {
     // public function __construct() {
@@ -41,7 +40,7 @@ class RegistrationController extends Controller
         // Redirect to payment page
         return redirect()->route('user.page.battle.battle', $activity->id);
     }
-    
+
     public function showPaymentForm(Activity $activity)
     {
         return view('user.payment', compact('activity'));
@@ -56,12 +55,13 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'form_text' => 'required|string',
-            'form_image' => 'required|image|max:5000'
+            'form_image' => 'required|image|max:5000',
         ]);
 
         $from_image_path = $request->file('form_image')->store('form_images', 'public');
-
         $external_id = 'Inv-' . rand();
+
+        $apiInstance = new InvoiceApi();
 
         $invoice = new CreateInvoiceRequest([
             'external_id' => $external_id,
@@ -70,47 +70,22 @@ class RegistrationController extends Controller
             'customer_email' => Auth::user()->email,
         ]);
 
-        try {
-            $apiInstance = new InvoiceApi();
-            $generateInvoice = $apiInstance->createInvoice($invoice);
+        $generateInvoice = $apiInstance->createInvoice($invoice);
 
-            $invoiceUrl = $generateInvoice->getInvoiceUrl();
+        $invoiceUrl = $generateInvoice->getInvoiceUrl();
 
-            BattleTransaksi::create([
-                'user_id' => Auth::id(),
-                'activity_id' => $activity->id,
-                'amount' => $activity->price,
-                'external_id' => $external_id,
-                'form_text' => $request->input('form_text'),
-                'form_image' => $from_image_path,
-                'invoice_url' => $invoiceUrl
-            ]);
+        BattleTransaksi::create([
+            'user_id' => Auth::id(),
+            'activity_id' => $activity->id,
+            'amount' => $activity->price,
+            'external_id' => $external_id,
+            'form_text' => $request->input('form_text'),
+            'form_image' => $from_image_path,
+            'invoice_url' => $invoiceUrl,
+        ]);
 
-            // dd(BattleTransaksi::create([
-            //     'user_id' => Auth::id(),
-            //     'activity_id' => $activity->id,
-            //     'amount' => $activity->price,
-            //     'extrernal_id' => $external_id,
-            //     'form_text' => $request->input('form_text'),
-            //     'form_image' => $from_image_path,
-            //     'invoice_url' => $invoiceUrl
-            // ]));
-
-            return redirect($invoiceUrl);
-
-        } catch (\Throwable $th) {
-            return response()->json(
-                [
-                    'status' => 'error',
-                    'code' => 500,
-                    'message' => 'Failed to create invoice',
-                    'errors' => $th->getMessage(),
-                ],
-                500
-            );
-        }
+        return redirect($invoiceUrl);
     }
-
 
     public function paymentCallback(Request $request)
     {
@@ -137,13 +112,13 @@ class RegistrationController extends Controller
                     'status' => 'PAID',
                     'payment_date' => now(),
                 ]);
-    
+
                 $activity = Activity::find($battleTransaksi->activity_id);
-    
+
                 if ($activity && $activity->slot > 0) {
                     $activity->decrement('slot');
                 }
-    
+
                 return response()->json(['status' => 'success', 'message' => 'Battle transaction updated successfully']);
             }
         }
@@ -158,7 +133,6 @@ class RegistrationController extends Controller
 
         return response()->json(['status' => 'error', 'message' => 'Transaction not found'], 404);
     }
-
 
     public function unregister(Activity $activity)
     {

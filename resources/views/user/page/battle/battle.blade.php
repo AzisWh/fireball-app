@@ -4,7 +4,6 @@
     <!-- ======= Hero Section ======= -->
     <section class="hero-section inner-page">
         <div class="wave">
-            <!-- SVG content -->
         </div>
         <div class="container">
             <div class="row align-items-center">
@@ -47,13 +46,13 @@
                                         
                                         @if(auth()->check())
                                             @php
-                                                $isRegistered = $activity->registrations && $activity->registrations->contains('user_id', auth()->id());
+                                                $isRegistered = $activity->battle_transaksis && $activity->battle_transaksis->contains('user_id', auth()->id());
                                             @endphp
 
                                             <form action="{{ route('activity.payment', $activity->id) }}" method="GET">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary btn-sm" {{ $isRegistered ? 'disabled' : '' }}>
-                                                    {{ $isRegistered ? 'Sudah Terdaftar' : 'Daftar' }}
+                                                    {{ $isRegistered ? 'ANDA SUDAH MENDAFTAR' : 'DAFTAR' }}
                                                 </button>
                                             </form>
                                         @else
@@ -88,13 +87,13 @@
                             <div class="card-body">
                                 <h3 class="card-title">{{ $event->name }}</h3>
                                 <p class="card-text">{{ $event->description }}</p>
-                                <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>
                                 <p><strong>Start Date:</strong> {{ $event->start_date }} | <strong>End Date:</strong> {{ $event->end_date }}</p>
-
+                                
                                 @foreach($event->activities as $activity)
                                     <div class="activity mb-3">
                                         <h5>{{ $activity->name }}</h5>
                                         <p>{{ $activity->description }}</p>
+                                        <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>   
                                     </div>
                                 @endforeach
                             </div>

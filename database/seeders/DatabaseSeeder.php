@@ -38,5 +38,12 @@ class DatabaseSeeder extends Seeder
             'phone_number' => '1122334455',
             'role_type' => 2,
         ]);
+        User::factory()->create([
+            'name' => 'usscadmin',
+            'email' => 'miminussc@gmail.com',
+            'password' => Hash::make('miminussc@gmail.com'),
+            'phone_number' => '1122334455',
+            'role_type' => 3,
+        ]);
     }
 }

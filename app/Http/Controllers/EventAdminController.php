@@ -58,8 +58,6 @@ class EventAdminController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'price' => 'required|integer',
-            'slot' => 'required|integer',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
         ]);

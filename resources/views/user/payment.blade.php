@@ -1,11 +1,28 @@
 @extends('user.layout.app')
 
 @section('content')
+    <section class="hero-section inner-page">
+        <div class="wave">
+            <!-- SVG content -->
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div class="col-md-7 text-center hero-text">
+                            <h1 data-aos="fade-up" data-aos-delay=""> {{ $activity->name }}     Payment Page</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
         <h2>Detail Pembayaran untuk {{ $activity->name }}</h2>
         <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>
 
-        <form action="{{ route('activity.payment.process', $activity->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('activity.payment.process', $activity->id) }}" method="POST" enctype="multipart/form-data" target="_blank">
             @csrf
             <div class="form-group">
                 <label for="form_text">Keterangan Tambahan</label>

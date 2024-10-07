@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUsscController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardUser;
 use App\Http\Controllers\EventActivityController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\LapanganHargaController;
 use App\Http\Controllers\LapanganKatController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UsscController;
 use App\Models\KategoriLapangan;
 use App\Models\LapanganHarga;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +36,8 @@ Route::get('/sewa/lapangan', [LandingController::class, 'detail'])->name('user.l
 Route::get('/user/battle',[EventController::class,'index'])->name('user.page.battle.battle');
 Route::get('user/mitra', [MitraController::class,'showMitra'])->name('user.mitra');
 Route::get('mitra/{id}', [MitraController::class,'detail'])->name('mitra.detail');
+// ussc
+Route::get('/sewa/ussc', [UsscController::class,'index'])->name('ussc.index');
 
 // view non controller
 Route::get('/user/product', function () {
@@ -61,18 +65,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/sewa/lapangan/jam/{lapangan_id}', [LandingController::class, 'lapangan_jam'])->name('user.lapangan_jam');
         // dashboard
         Route::get('user/dashboard', [DashboardUser::class, 'index'])->name('user.dashboard');
-        // Route::post('activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        // Route::delete('activities/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
 
         // ragabattle
         Route::post('activity/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); // 1
+        Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); 
         Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
         
-        // Route::post('/activities/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        // Route::get('/invoices/{invoice}', [RegistrationController::class, 'showInvoice'])->name('invoice.show');
-
-
+        // ussc
+        Route::get('/sewa/ussc/form',[UsscController::class, 'sewaussc'])->name('ussc.sewa');
+        Route::get('/sewa/ussc/jam',[UsscController::class, 'ussc_jam'])->name('ussc.jam');
+        Route::post('/sewa/ussc/pesan',[UsscController::class, 'pesanUssc'])->name('ussc.pesan');
+       
     });
 
     Route::middleware('role:1')->group(function () {
@@ -90,5 +93,12 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:2')->group(function () {
         Route::get('/superdashmin/home', function () {return view('superadmin.home');})->name('superadmin.home');
+    });
+
+    // ussc
+    Route::middleware('role:3')->group(function () {
+        Route::get('/minussc/home', [AdminUsscController::class, 'index'])->name('miminussc.home');
+        Route::get('/miminussc/listsewa', [AdminUsscController::class, 'listsewa'])->name('miminussc.listsewa');
+        Route::patch('/admin/ussc/update-status/{id}', [AdminUsscController::class, 'updateStatus'])->name('miminussc.updateStatus');
     });
 });
