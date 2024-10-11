@@ -93,4 +93,61 @@
   </section>
 </section>
 
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Battle Table</h1>
+        </div>
+
+        @if ($battleTransaksis->isEmpty())
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Invoice</th>
+                        <th>Activity</th>
+                        <th>Total Harga</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="6">Belum Ada Transaksi</td>
+                    </tr>
+                </tbody>
+            </table>
+        @else
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Invoice</th>
+                        <th>Activity</th>
+                        <th>Total Harga</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($battleTransaksis as $d)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $d->external_id }}</td>
+                        <td>{{ $d->activity->name }}</td>
+                        <td>{{ 'Rp. '.number_format($d->amount) }}</td>
+                        <td>{{ $d->status }}</td>
+                        <td>
+                            @if($d->status === 'UNPAID')
+                                <a target="__blank" href="{{ $d->invoice_url }}" class="btn btn-sm btn-warning">Pay Now</a>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+    </div>
+</section>
+
 @endsection

@@ -55,6 +55,21 @@
                 </a>
               </div>
             @endforeach
+            <div class="col-md-4 col-sm-6">
+              <h5>Peta Lokasi</h5>
+              <a target="_blank" href="https://www.google.com/maps/place/GOR+Satria/@-6.9706321,110.4086703,17z/data=!3m1!4b1!4m6!3m5!1s0x2e70f4b1814e38c9:0x94367a67d8cd1711!8m2!3d-6.9706321!4d110.4112452!16s%2Fg%2F11c548dx__?entry=ttu&g_ep=EgoyMDI0MTAwNS4yIKXMDSoASAFQAw%3D%3D">
+                <button class="btn btn-primary">Google Maps</button>
+              </a>
+              <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.327528032827!2d110.40867027504424!3d-6.970632093029987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70f4b1814e38c9%3A0x94367a67d8cd1711!2sGOR%20Satria!5e0!3m2!1sid!2sid!4v1728447876990!5m2!1sid!2sid"
+                  width="100%" 
+                  height="450" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
           </div>
         </div>                                                                                      
       @else
@@ -70,6 +85,7 @@
           <h3>Riwayat Pemesanan</h3>
           @if(count($riwayat))
             <div style="overflow-x: auto">
+              <h1>Contact Person : </h1>
               <table class="table table-bordered">
                 <thead>
                   <tr>

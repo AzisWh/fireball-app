@@ -81,10 +81,23 @@ class RegistrationController extends Controller
             'external_id' => $external_id,
             'form_text' => $request->input('form_text'),
             'form_image' => $from_image_path,
+            'status' => 'UNPAID', 
             'invoice_url' => $invoiceUrl,
         ]);
+    
+        return redirect()->route('user.dashboard')->with('success', 'Transaction created. Please proceed to payment.');
 
-        return redirect($invoiceUrl);
+        // BattleTransaksi::create([
+        //     'user_id' => Auth::id(),
+        //     'activity_id' => $activity->id,
+        //     'amount' => $activity->price,
+        //     'external_id' => $external_id,
+        //     'form_text' => $request->input('form_text'),
+        //     'form_image' => $from_image_path,
+        //     'invoice_url' => $invoiceUrl,
+        // ]);
+
+        // return redirect($invoiceUrl);
     }
 
     public function paymentCallback(Request $request)

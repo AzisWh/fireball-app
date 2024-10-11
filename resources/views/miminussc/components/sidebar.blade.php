@@ -14,6 +14,12 @@
                     List Penyewaan
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('miminussc.listpemakaian') }}">
+                    <span data-feather="file"></span>
+                    Edit Pemakaian Lapangan
+                </a>
+            </li>
             
         </ul>
     </div>

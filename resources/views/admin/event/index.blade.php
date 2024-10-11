@@ -27,7 +27,7 @@
             <td>{{ $event->name }}</td>
             <td>{{ $event->description }}</td>
             <td>
-                <img src="{{ $event->image ? asset('storage/'.$event->image) : asset('landing/img/blog-1.jpg') }}" alt="{{$event->name}}" style="width: 300px">
+                <img src="{{ $event->image ? asset('storage/pubilc/'.$event->image) : asset('landing/img/blog-1.jpg') }}" alt="{{$event->name}}" style="width: 300px">
             </td>
             <td>{{ $event->start_date }}</td>
             <td>{{ $event->end_date }}</td>

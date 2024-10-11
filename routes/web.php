@@ -99,6 +99,12 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:3')->group(function () {
         Route::get('/minussc/home', [AdminUsscController::class, 'index'])->name('miminussc.home');
         Route::get('/miminussc/listsewa', [AdminUsscController::class, 'listsewa'])->name('miminussc.listsewa');
-        Route::patch('/admin/ussc/update-status/{id}', [AdminUsscController::class, 'updateStatus'])->name('miminussc.updateStatus');
+        Route::get('/miminussc/listpakai', [AdminUsscController::class, 'listpemakaian'])->name('miminussc.listpemakaian');
+        Route::get('/miminussc/sewa/ussc/jam',[AdminUsscController::class, 'ussc_jam'])->name('miminussc.jam');
+
+
+        Route::post('/miminussc/booking', [AdminUsscController::class, 'updateSewa'])->name('miminussc.tambahSewa');
+        Route::patch('/miminussc/update-status/{id}', [AdminUsscController::class, 'updateStatus'])->name('miminussc.updateStatus');
+        Route::delete('/miminussc/delete-sewa/{id}', [AdminUsscController::class, 'deletePemesanan'])->name('miminussc.destroy');
     });
 });

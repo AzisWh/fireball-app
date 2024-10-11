@@ -46,11 +46,14 @@
                                         
                                         @if(auth()->check())
                                             @php
-                                                $isRegistered = $activity->battle_transaksis && $activity->battle_transaksis->contains('user_id', auth()->id());
+                                               $isRegistered = $activity->battle_transaksis && $activity->battle_transaksis->contains('user_id', auth()->id());
                                             @endphp
 
                                             <form action="{{ route('activity.payment', $activity->id) }}" method="GET">
                                                 @csrf
+                                                <p>
+                                                    {{$isRegistered ? "True" : "False"}}
+                                                </p>
                                                 <button type="submit" class="btn btn-primary btn-sm" {{ $isRegistered ? 'disabled' : '' }}>
                                                     {{ $isRegistered ? 'ANDA SUDAH MENDAFTAR' : 'DAFTAR' }}
                                                 </button>

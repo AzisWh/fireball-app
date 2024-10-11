@@ -29,6 +29,7 @@
     {{-- datepicker --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @stack('myscript')
 
 </body>
 </html>
