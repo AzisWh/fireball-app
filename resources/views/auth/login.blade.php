@@ -41,16 +41,16 @@
                     @csrf
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="email">Email address</label>
                         <input type="email" id="email" name="email" class="form-control form-control-lg"
                             placeholder="Enter a valid email address" value="{{ old('email') }}" />
-                        <label class="form-label" for="email">Email address</label>
                     </div>
 
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-3">
+                        <label class="form-label" for="password">Password</label>
                         <input type="password" id="password" name="password" class="form-control form-control-lg"
                             placeholder="Enter password" />
-                        <label class="form-label" for="password">Password</label>
                     </div>
 
                     <!-- Error message for invalid login -->

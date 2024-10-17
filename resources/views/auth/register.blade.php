@@ -39,9 +39,9 @@
             @csrf
             <!-- Name input -->
             <div class="form-outline mb-4">
+              <label class="form-label" for="name">Nama</label>
               <input type="name" id="name" name="name" class="form-control form-control-lg @error('name') is-invalid @enderror"
                 placeholder="Nama" value="{{ old('name') }}" />
-              <label class="form-label" for="name">Nama</label>
               @error('name')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -51,9 +51,9 @@
 
             <!-- Email input -->
             <div class="form-outline mb-4">
+              <label class="form-label" for="email">Email address</label>
               <input type="email" id="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror"
                 placeholder="Enter a valid email address" value="{{ old('email') }}" />
-              <label class="form-label" for="email">Email address</label>
               @error('email')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -63,9 +63,9 @@
 
             <!-- Password input -->
             <div class="form-outline mb-3">
+              <label class="form-label" for="password">Password</label>
               <input type="password" id="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror"
                 placeholder="Enter password" />
-              <label class="form-label" for="password">Password</label>
               @error('password')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -75,9 +75,9 @@
 
             <!-- Confirm Password input -->
             <div class="form-outline mb-3">
+              <label class="form-label" for="password-confirm">Confirm Password</label>
               <input type="password" id="password-confirm" name="password_confirmation" class="form-control form-control-lg"
                 placeholder="Confirm password" />
-              <label class="form-label" for="password-confirm">Confirm Password</label>
             </div>
 
             <!-- Submit Button -->

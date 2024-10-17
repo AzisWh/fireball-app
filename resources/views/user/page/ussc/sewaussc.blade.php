@@ -84,7 +84,7 @@
                 InRaga akan melakukan pengecekan terhadap dokumen yang Kamu kirimkan. Jika ada kekurangan, kami akan menghubungi kamu melalui email atau nomor telepon yang tercantum.
               </li>
             </div>
-            <img class="img_gallery" src="{{ asset('assets/img/contoh.JPEG') }}" alt="Contoh format KTM" style="width: 100%; max-width: 550px;">
+            <img class="img_gallery" src="{{ asset('assets/img/datamhs.png') }}" alt="Contoh format KTM" style="width: 100%; max-width: 550px;">
           </div>
         </div>
         
