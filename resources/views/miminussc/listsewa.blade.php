@@ -133,7 +133,7 @@
 @push('myscript')
 <script>
     function confirmDelete() {
-        return confirm('Are you sure you want to delete this booking? This action cannot be undone.');
+        return confirm('Aksi ini akan menghapus pemesanan secara permanen.');
     }
 </script>
 @endpush

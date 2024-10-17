@@ -103,7 +103,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/miminussc/sewa/ussc/jam',[AdminUsscController::class, 'ussc_jam'])->name('miminussc.jam');
 
 
-        Route::post('/miminussc/booking', [AdminUsscController::class, 'updateSewa'])->name('miminussc.tambahSewa');
+        Route::post('/miminussc/booking', [AdminUsscController::class, 'addSewa'])->name('miminussc.tambahSewa');
         Route::patch('/miminussc/update-status/{id}', [AdminUsscController::class, 'updateStatus'])->name('miminussc.updateStatus');
         Route::delete('/miminussc/delete-sewa/{id}', [AdminUsscController::class, 'deletePemesanan'])->name('miminussc.destroy');
     });

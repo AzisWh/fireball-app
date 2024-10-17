@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BookingUsscNotification;
+use App\Mail\StatusUsscUpdatedNotification;
 use App\Models\FormUssc;
 use App\Models\User;
 use App\Models\UsscModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminUsscController extends Controller
 {
@@ -19,11 +22,9 @@ class AdminUsscController extends Controller
         if ($request->has('start_date') && $request->start_date) {
             $query->where('tanggal', '>=', $request->start_date);
         }
-
         if ($request->has('end_date') && $request->end_date) {
             $query->where('tanggal', '<=', $request->end_date);
         }
-
         if ($request->has('email') && !empty($request->email)) {
             $query->whereHas('user', function($q) use ($request) {
                 $q->where('email', 'like', '%' . $request->email . '%');
@@ -48,6 +49,10 @@ class AdminUsscController extends Controller
 
         $formUssc = FormUssc::findOrFail($id);
         $formUssc->update(['status' => $validated['status']]);
+
+        if ($validated['status'] === 'ACCEPTED') {
+            Mail::to($formUssc->email)->send(new StatusUsscUpdatedNotification($formUssc));
+        }
 
         return redirect()->route('miminussc.listsewa')->with('success', 'Status berhasil diperbarui');
     }
@@ -91,7 +96,7 @@ class AdminUsscController extends Controller
         return response()->json(['harga' => $jamData]);
     }
 
-    public function updateSewa(Request $request)
+    public function addSewa(Request $request)
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',

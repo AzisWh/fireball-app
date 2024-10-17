@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BookingUsscNotification;
 use App\Models\form_usc;
 use App\Models\FormUssc;
 use App\Models\UsscModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class UsscController extends Controller
 {
@@ -82,7 +84,7 @@ class UsscController extends Controller
             $validated['ktm'] = $path;
         }
 
-        FormUssc::create([
+        $formUssc = FormUssc::create([
             'user_id' => $login->id,
             'email' => $login->email,
             'phone_number' => $login->phone_number,
@@ -90,11 +92,12 @@ class UsscController extends Controller
             'tanggal' => $validated['tanggal'],
             'jam' => json_encode($validated['jam']),
             'ktm' => $originalName,
-            'status' => 'PENDING', 
+            'status' => 'PENDING',
             'kategori' => $validated['kategori'],
         ]);
 
         // dd($pesanUssc);
+        Mail::to(['111202113868@mhs.dinus.ac.id','pizzonia20@gmail.com'])->send(new BookingUsscNotification($formUssc));
         
 
         return redirect()->route('ussc.index')->with('success', 'Berhasil melakukan pemesanan, tunggu konfirmasi admin');

@@ -29,9 +29,9 @@
                 @forelse ($upcomingEvents as $event)
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="card h-100 shadow-sm">
-                            @if($event->image)
+                            {{-- @if($event->image)
                                 <img src="{{ asset('storage/'.$event->image) }}" alt="{{ $event->name }}" class="card-img-top img-fluid rounded">
-                            @endif
+                            @endif --}}
                             <div class="card-body">
                                 <h3 class="card-title">{{ $event->name }}</h3>
                                 <p class="card-text">{{ $event->description }}</p>
@@ -84,9 +84,9 @@
                 @forelse ($finishedEvents as $event)
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="card h-100 shadow-sm">
-                            @if($event->image)
+                            {{-- @if($event->image)
                                 <img src="{{ asset('storage/'.$event->image) }}" alt="{{ $event->name }}" class="card-img-top img-fluid rounded" >
-                            @endif
+                            @endif --}}
                             <div class="card-body">
                                 <h3 class="card-title">{{ $event->name }}</h3>
                                 <p class="card-text">{{ $event->description }}</p>

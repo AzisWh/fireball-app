@@ -32,7 +32,7 @@
 
   <div class="row">        <div class="col-md-3 mb-3" data-aos="fade-up" data-aos-delay="">
     <div class="feature-1 text-center">
-        <img class="img_gallery " src="{{ asset ("assets/img/Gallery/gallery-1.png") }}" alt="sepakbola" width="80%">
+        <img class="img_gallery " src="{{ asset ("assets/img/Gallery/gallery-1.svg") }}" alt="sepakbola" width="80%">
     </div>
   </div>
   <div class="col-md-3 mb-3" data-aos="fade-up" data-aos-delay="">

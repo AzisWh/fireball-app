@@ -36,7 +36,7 @@
       {{-- <form action="#" method="POST"> --}}
         @csrf
         <div class="form-group">
-            <label for="lapangan_tempat_id">Tempat Lapangan</label>
+            <label for="lapangan_tempat_id" class="text-black fw-bold">Tempat Lapangan</label>
             <select name="lapangan_tempat_id" id="lapangan_tempat_id" class="form-control" required>
                 @foreach($lapangan as $item)
                 <option value="{{ $item->id }}">{{ $item->nama_lapangan }} - {{ $item->lokasi_lapangan }}</option>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group">
-          <label for="kategori">Kategori Lapangan</label>
+          <label for="kategori" class="text-black fw-bold">Kategori Lapangan</label>
           <select name="kategori" id="kategori" class="form-control" required>
               <option value="pilih">Pilih Kategori Lapangan</option>
               <option value="futsal">Futsal</option>
@@ -55,23 +55,43 @@
         </div>
 
         <div class="form-group">
-          <label for="tanggal">Tanggal</label>
+          <label for="tanggal" class="text-black fw-bold">Tanggal</label>
+          
           <input type="date" name="tanggal" id="tanggal" class="form-control" required>
         </div>
-        <div class="form-group">
-          <label for="jam_mulai">Jam Mulai</label>
-
-          <div class="d-flex" id="container-jam" style="gap: 1rem; flex-wrap: wrap;">
+        <div class="form-group ">
+          <label for="jam_mulai" class="text-black fw-bold">Jam Mulai</label>
+          <p>Pilih tanggal dan tunggu sampai form checkbox untuk memilih tanggal dan jam muncul!</p>
+          <div class="d-flex justify-content-center justify-content-md-start" id="container-jam" style="gap: 1rem; flex-wrap: wrap;">
       
           </div>
 
         </div>
         <div class="form-group">
-          <label for="ktm">Upload KTM</label>
-          <input type="file" id="ktm" class="form-controll" name="ktm" required>
+          <label for="ktm " class="text-black fw-bold">Upload KTM</label>
+          <input type="file" id="ktm" class="form-control" name="ktm" required>
+        
+          <div class="mt-2 ">
+            <p class="text-black fw-bold">Format Pengumpulan File</p>
+            <div class="text-black">
+              <li>
+                Kamu wajib mengikuti format yang terlampir sebagai berikut dengan minimal <b>2 data</b> sebagai penanggung jawab.
+              </li>
+              <li>
+                Setelah mengisi formulir, pastikan Kamu mengupload file dokumen dalam format PDF.
+              </li>
+              <li>
+                InRaga akan melakukan pengecekan terhadap dokumen yang Kamu kirimkan. Jika ada kekurangan, kami akan menghubungi kamu melalui email atau nomor telepon yang tercantum.
+              </li>
+            </div>
+            <img class="img_gallery" src="{{ asset('assets/img/contoh.JPEG') }}" alt="Contoh format KTM" style="width: 100%; max-width: 550px;">
+          </div>
+        </div>
+        
+        <div class="d-flex justify-content-center justify-content-md-start">
+        <button type="submit" class="btn btn-primary mt-3">Ajukan Penyewaan</button>
 
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Ajukan Penyewaan</button>
       </form>
       
     </div>
