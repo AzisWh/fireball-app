@@ -96,7 +96,62 @@
 <section class="section">
     <div class="container">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Battle Table</h1>
+            <h1 class="h2">KMI Expo 2024 Table</h1>
+        </div>
+
+        @if ($registrations->isEmpty())
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Event</th>
+                        <th>Activity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" class="text-center">Belum Ada Registrasi</td>
+                    </tr>
+                </tbody>
+            </table>
+        @else
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Event</th>
+                        <th>Activity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($registrations as $registration)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ auth()->user()->name }}</td>
+                        <td>{{ $registration->activity->event->name }}</td> 
+                        <td>{{ $registration->activity->name }}</td>
+                        <td>
+                            <form action="{{ route('activities.unregister', $registration->activity->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm">Unregister</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Raga Battle Table</h1>
         </div>
 
         @if ($battleTransaksis->isEmpty())

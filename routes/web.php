@@ -55,6 +55,43 @@ Route::get('/user/shop', function () {
 Route::get('/user/trainer', function () {
     return view('user.page.trainer');
 })->name('user.page.trainer');
+// mitra detail
+Route::get('/detail/udinus', function () {
+    return view('user.page.mitra.detailmitra.udinus');
+})->name('mitra.detail.udinus');
+Route::get('/detail/minton', function () {
+    return view('user.page.mitra.detailmitra.minton');
+})->name('mitra.detail.minton');
+Route::get('/detail/psis', function () {
+    return view('user.page.mitra.detailmitra.psis');
+})->name('mitra.detail.psis');
+Route::get('/detail/liken', function () {
+    return view('user.page.mitra.detailmitra.liken');
+})->name('mitra.detail.liken');
+Route::get('/detail/club', function () {
+    return view('user.page.mitra.detailmitra.club');
+})->name('mitra.detail.club');
+Route::get('/detail/thechampion', function () {
+    return view('user.page.mitra.detailmitra.thechampion');
+})->name('mitra.detail.thechampion');
+Route::get('/detail/arena', function () {
+    return view('user.page.mitra.detailmitra.arena');
+})->name('mitra.detail.arena');
+Route::get('/detail/ormawa', function () {
+    return view('user.page.mitra.detailmitra.ormawa');
+})->name('mitra.detail.ormawa');
+Route::get('/detail/porsik', function () {
+    return view('user.page.mitra.detailmitra.porsik');
+})->name('mitra.detail.porsik');
+Route::get('/detail/zonasport', function () {
+    return view('user.page.mitra.detailmitra.zonasport');
+})->name('mitra.detail.zonasport');
+Route::get('/detail/indosport', function () {
+    return view('user.page.mitra.detailmitra.indosport');
+})->name('mitra.detail.indosport');
+Route::get('/detail/suara', function () {
+    return view('user.page.mitra.detailmitra.suara');
+})->name('mitra.detail.suara');
 
 Route::middleware('auth')->group(function () {
     Route::middleware('role:0')->group(function () {
@@ -68,8 +105,9 @@ Route::middleware('auth')->group(function () {
 
         // ragabattle
         Route::post('activity/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); 
-        Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
+        Route::post('activity/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
+        // Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); 
+        // Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
         
         // ussc
         Route::get('/sewa/ussc/form',[UsscController::class, 'sewaussc'])->name('ussc.sewa');

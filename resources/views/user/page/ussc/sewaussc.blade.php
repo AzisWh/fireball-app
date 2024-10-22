@@ -70,6 +70,12 @@
         <div class="form-group">
           <label for="ktm " class="text-black fw-bold">Upload KTM</label>
           <input type="file" id="ktm" class="form-control" name="ktm" required>
+
+          @error('ktm')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
         
           <div class="mt-2 ">
             <p class="text-black fw-bold">Format Pengumpulan File</p>
@@ -78,7 +84,7 @@
                 Kamu wajib mengikuti format yang terlampir sebagai berikut dengan minimal <b>2 data</b> sebagai penanggung jawab.
               </li>
               <li>
-                Setelah mengisi formulir, pastikan Kamu mengupload file dokumen dalam format PDF.
+                Setelah mengisi formulir, pastikan Kamu mengupload file dokumen dalam format PDF dengan maksimal ukuran <b>5MB</b>.
               </li>
               <li>
                 InRaga akan melakukan pengecekan terhadap dokumen yang Kamu kirimkan. Jika ada kekurangan, kami akan menghubungi kamu melalui email atau nomor telepon yang tercantum.

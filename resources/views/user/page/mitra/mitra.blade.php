@@ -36,127 +36,175 @@
                 </span>
             </h4>
             <h4 data-aos="fade-up">Mitra Kami</h4>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">UDINUS</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/udinus.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+              
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.udinus') }}"> 
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">UDINUS</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/udinus.png') }}" class="img-fluid " style="width: 150px" alt="UDINUS">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">Dinus Badminton</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/dinusminton.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.arena') }}"> 
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">The Arena</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/arena.png') }}" class="img-fluid " style="width: 150px" alt="UDINUS">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">PSIS</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/psis.svg') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.minton') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">Dinus Badminton Club</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/dinusminton.png') }}" class="img-fluid " style="width: 150px" alt="Dinus Badminton">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">Liken Sport</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/likensport.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.psis') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">PSIS</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/psis.svg') }}" class="img-fluid " style="width: 150px" alt="PSIS">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">The Club</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/theclub.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.liken') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">Liken Sport</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/likensport.png') }}" class="img-fluid " style="width: 150px" alt="Liken Sport">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">The Champion Stadium</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/thechampionstadium.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.club') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">The Club</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/theclub.png') }}" class="img-fluid " style="width: 150px" alt="The Club">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">Ormawa Udinus</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/ormawa.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.thechampion') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">The Champion Stadium</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/thechampionstadium.png') }}" class="img-fluid " style="width: 150px" alt="The Champion Stadium">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">PORSIK</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/smakristen.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.ormawa') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">Ormawa Udinus</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/ormawa.png') }}" class="img-fluid " style="width: 150px" alt="Ormawa Udinus">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">Ormawa Udinus</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/ormawa.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.porsik') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">PORSIK</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/smakristen.png') }}" class="img-fluid " style="width: 150px" alt="PORSIK">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">Indosport</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/indosport.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.zonasport') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">Zona Sport Apparel</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/zonasport.png') }}" class="img-fluid " style="width: 150px" alt="Zona Sport Apparel">
                             </div>
                         </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                        <div class="card mb-4 shadow-sm rounded">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-center">Suara Merdeka</h5>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('assets/img/mitra/suaramerdeka.png') }}" class="img-fluid " style="width: 150px" alt="/">
-                                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.indosport') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">Indosport</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/indosport.png') }}" class="img-fluid " style="width: 150px" alt="Indosport">
                             </div>
                         </div>
-                </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="{{ route('mitra.detail.suara') }}">
+                    <div class="card mb-4 shadow-sm rounded">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">Suara Merdeka</h5>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('assets/img/mitra/suaramerdeka.png') }}" class="img-fluid " style="width: 150px" alt="Suara Merdeka">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
             {{-- @if (count($mitra)>0)
             @foreach ($mitra as $item)
             <div class="col-md-4" data-aos="fade-up">
@@ -167,14 +215,13 @@
                             <hr>
                             <div class="d-flex justify-content-center">
                                 @if ($item->image)
-                                    {{-- @php
+                                     @php
                                         $imagePath = Storage::url('mitra/' . $item->image);
                                     @endphp
-                                    <img src="{{$imagePath}}" class="img-fluid " style="width: 150px" alt="{{ $item->namamitra }}"> --}}
-                                    {{-- <img src="{{ asset('storage/mitra/' . $item->image) }}" class="img-fluid " style="width: 150px" alt="{{ $item->namamitra }}">
+                                     <img src="{{ asset('storage/mitra/' . $item->image) }}" class="img-fluid " style="width: 150px" alt="{{ $item->namamitra }}">
                                 @else
                                     <p class="text-center">Gambar belum tersedia</p>
-                                @endif
+                                @endif 
                             </div>
                         </div>
                     </div>
@@ -185,7 +232,7 @@
                 <div class="col-md-12">
                     <h1 class="text-center fw-bold">BELUM ADA MITRA</h1>
                 </div>
-            @endif --}} 
+            @endif  --}}
            
         </div>
     </section>

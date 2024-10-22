@@ -84,7 +84,7 @@
                 <i class="bi bi-people"></i>
               </div> -->
               <h3 class="mt-5" style="font-size: 23px; font-weight: thin;">Kolaboratif</h3>
-              <p>Buat kompetisi dan kolalborasi dengn kami untuk mendapatkan sponsor !</p>
+              <p>Buat kompetisi dan kolaborasi dengn kami untuk mendapatkan sponsor !</p>
             </div>
           </div>
         </div>

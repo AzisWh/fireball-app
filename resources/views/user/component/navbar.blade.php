@@ -13,11 +13,11 @@
           </a></li>
           <!-- <li><a href="blog.html">Blog</a></li> -->
           <li><a class="{{ request()->is('/user/gallery') ? 'active' : ''}}" href="/user/gallery">Gallery</a></li>
-          <li><a class="{{ request()->is('/user/mitra') ? 'active' : ''}}" href="/user/mitra">Jadi Mitra Kami</a></li>
+          <li><a class="{{ request()->is('/user/mitra') ? 'active' : ''}}" href="/user/mitra">Mitra</a></li>
           <li><a class="{{ request()->is('/user/ussc') ? 'active' : ''}}" href="/sewa/ussc">USSC</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Features
+              Fitur
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item {{ request()->is('/user/sewa') ? 'active' : ''}}" href="/user/sewa">Raga Rent</a></li>
@@ -30,10 +30,10 @@
               @if (auth()->check())
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Welcome, {{ auth()->user()->name }}
+                Selamat Datang, {{ auth()->user()->name }}
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item {{ request()->is('/user/dashboard') ? 'active' : ''}}" href="/user/dashboard">Riwayat</a></li>
+                  <li><a class="dropdown-item {{ request()->is('/user/dashboard') ? 'active' : ''}}" href="/user/dashboard">Dashboard Riwayat</a></li>
                   <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf

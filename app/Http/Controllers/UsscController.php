@@ -74,6 +74,9 @@ class UsscController extends Controller
             'kategori' => 'required|string',
             'jam' => 'required|array', 
             'ktm' => 'required|file', 
+        ],[
+        'ktm.mimes' => 'File KTM harus berformat PDF.',
+        'ktm.max' => 'File KTM tidak boleh lebih dari 5 MB.'
         ]);
 
         $login = Auth::user();
@@ -97,7 +100,7 @@ class UsscController extends Controller
         ]);
 
         // dd($pesanUssc);
-        Mail::to(['111202113868@mhs.dinus.ac.id','pizzonia20@gmail.com'])->send(new BookingUsscNotification($formUssc));
+        Mail::to(['inragaid@gmail.com'])->send(new BookingUsscNotification($formUssc));
         
 
         return redirect()->route('ussc.index')->with('success', 'Berhasil melakukan pemesanan, tunggu konfirmasi admin');

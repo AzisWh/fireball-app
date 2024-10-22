@@ -20,4 +20,8 @@ class Registration extends Model
     {
         return $this->belongsTo(Activity::class);
     }
+
+    public function event() {
+        return $this->belongsTo(Event::class); 
+    }
 }
