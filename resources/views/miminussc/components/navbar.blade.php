@@ -1,27 +1,42 @@
-<!-- resources/views/admin/components/navbar.blade.php -->
-<nav class=" navbar navbar-expand-lg navbar-light bg-primary">
-    <div class="container">
-        <a class="navbar-brand text-white" href="#">USSC ADMINISTRATOR</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('miminussc.home') }}">Dashboard</a>
-                </li>
-                <li class="navbar-nav">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    <a class="nav-link text-white" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                </li>
-                <!-- Add more links as needed -->
-            </ul>
-        </div>
-    </div>
-</nav>
+
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{ route('miminussc.home') }}">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+      <li class="nav-item menu-open">
+        <a href="#" class="nav-link ">
+            <i class="nav-icon fas fa-th"></i>
+          <p>
+            Master
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+              <a class="nav-link" href="{{route('miminussc.listsewa')}}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>List Penyewa</p>
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('miminussc.listpemakaian') }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Edit List Pemakaian</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <form action="{{route('logout')}}" method="POST">
+            @csrf
+            <button class="btn btn-danger btn-block" type="submit">Logout</button>
+        </form>
+      </li>
+    </ul>
+  </nav>

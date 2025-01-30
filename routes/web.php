@@ -12,6 +12,7 @@ use App\Http\Controllers\LapanganHargaController;
 use App\Http\Controllers\LapanganKatController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\UsscController;
 use App\Models\KategoriLapangan;
 use App\Models\LapanganHarga;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('payment/callback', [RegistrationController::class, 'paymentCallback'])->name('payment.callback');
 Route::get('/', function () {
     return view('user.home');
+
 })->name('home');
 
 // auth
@@ -104,10 +106,11 @@ Route::middleware('auth')->group(function () {
         Route::get('user/dashboard', [DashboardUser::class, 'index'])->name('user.dashboard');
 
         // ragabattle
+        // Route::post('activity/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
+        // Route::post('activity/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
         Route::post('activity/{activity}/register', [RegistrationController::class, 'register'])->name('activities.register');
-        Route::post('activity/{activity}/unregister', [RegistrationController::class, 'unregister'])->name('activities.unregister');
-        // Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); 
-        // Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
+        Route::get('activity/{activity}/payment', [RegistrationController::class, 'showPaymentForm'])->name('activity.payment'); 
+        Route::post('activity/{activity}/payment/process', [RegistrationController::class, 'processPayment'])->name('activity.payment.process');
         
         // ussc
         Route::get('/sewa/ussc/form',[UsscController::class, 'sewaussc'])->name('ussc.sewa');
@@ -127,6 +130,13 @@ Route::middleware('auth')->group(function () {
         Route::resource('events.activities', EventActivityController::class);
         Route::get('/admin/events/registered-users', [EventAdminController::class, 'registeredUsers'])->name('events.registeredUsers');
         Route::delete('/admin/registrations/{id}', [EventAdminController::class, 'destroyRegistration'])->name('admin.registrations.destroy');
+
+        Route::get('admin/user', [UserAdminController::class, 'index'])->name('admin.user.index');
+        Route::get('admin/user/create', [UserAdminController::class, 'create'])->name('admin.user.create');
+        Route::post('admin/user', [UserAdminController::class, 'store'])->name('admin.user.store');
+        Route::get('admin/user/{user}/edit', [UserAdminController::class, 'edit'])->name('admin.user.edit');
+        Route::put('admin/user/{user}', [UserAdminController::class, 'update'])->name('admin.user.update');
+        Route::delete('admin/user/{user}', [UserAdminController::class, 'destroy'])->name('admin.user.destroy');
     });
 
     Route::middleware('role:2')->group(function () {

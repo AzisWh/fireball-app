@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
           <label for="total_harga">Total Harga: </label>
-          <p id="total_harga" class="text-black fw-bold">Rp. 0 + 4000 (Biaya Layanan)</p>
+          <p id="total_harga" class="text-black fw-bold">Rp. 0 (belum termasuk biaya layanan)</p>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Pesan Sekarang</button>
       </form>
@@ -70,7 +70,7 @@
 @push('myscript')
   <script>
     $(document).ready(function() {
-      const tax = 4000;
+      // const tax = 4000;
 
       function get_jam() {
         $.ajax({
@@ -109,9 +109,8 @@
           let value = $(this).val().split('-');
           total += parseInt(value[1]);
         });
-        total += tax;
+        // total += tax;
         $('#total_harga').text(`(Rp. ${total})`);
-        $('#status').text('(Total harga + 4000 (biaya layanan))');
       }
 
       $(document).on('change', '.jam-checkbox', function() {

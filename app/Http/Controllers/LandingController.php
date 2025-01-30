@@ -122,7 +122,7 @@ class LandingController extends Controller
         $create_invoice_request = new CreateInvoiceRequest([
             'external_id' => $transaksi->external_id,
             'description' => $transaksi->invoice,
-            'amount' => $total_harga + 4000,
+            'amount' => $total_harga,
             'invoice_duration' => 172800,
             'currency' => 'IDR',
             'reminder_time' => 1
@@ -130,7 +130,7 @@ class LandingController extends Controller
         $result_xendit = $apiInstance->createInvoice($create_invoice_request);
 
         TransaksiLapangan::where('id', $transaksi->id)->update([
-            'total_harga' => $total_harga + 4000,
+            'total_harga' => $total_harga ,
             'link' => $result_xendit['invoice_url'],
         ]);
         TransaksiLapanganDetail::insert($detail);

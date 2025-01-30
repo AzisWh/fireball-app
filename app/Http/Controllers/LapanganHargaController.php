@@ -7,6 +7,7 @@ use App\Models\Lapangan;
 use App\Models\LapanganHarga;
 use App\Models\LapanganTempat;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LapanganHargaController extends Controller
 {
@@ -34,9 +35,14 @@ class LapanganHargaController extends Controller
         ]);
 
         
-        LapanganHarga::create($request->all());
-
-        return redirect()->route('hargalap.index')->with('success', 'Mitra created successfully.');
+        try {
+            LapanganHarga::create($request->all());
+            Alert::success('Berhasil', 'Harga Lapangan berhasil ditambahkan.');
+            return redirect()->route('hargalap.index');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat menambahkan harga lapangan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
 
     public function edit(LapanganHarga $hargalap)
@@ -55,15 +61,25 @@ class LapanganHargaController extends Controller
             'harga' => 'required|numeric',
         ]);
 
-        $hargalap->update($request->all());
-
-        return redirect()->route('hargalap.index')->with('success', 'Harga Lapangan updated successfully.');
+        try {
+            $hargalap->update($request->all());
+            Alert::success('Berhasil', 'Harga Lapangan berhasil diperbarui.');
+            return redirect()->route('hargalap.index');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat memperbarui harga lapangan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
 
     public function destroy(LapanganHarga $hargalap)
     {
-        $hargalap->delete();
-
-        return redirect()->route('hargalap.index')->with('success', 'Harga Lapangan deleted successfully.');
+        try {
+            $hargalap->delete();
+            Alert::success('Berhasil', 'Harga Lapangan berhasil dihapus.');
+            return redirect()->route('hargalap.index');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat menghapus harga lapangan: ' . $e->getMessage());
+            return redirect()->back();
+        }
     }
 }

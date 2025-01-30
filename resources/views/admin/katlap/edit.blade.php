@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('admin.layout.layout')
 
 @section('title', 'Edit Jenis')
 
@@ -9,7 +9,7 @@
         @method('PUT')
         <div class="form-group">
             <label for="jenis_lapangan">Jenis Lapangan</label>
-            <input type="text" name="jenis_lapangan" class="form-control" value="{{ $katlap->namamitra }}" required>
+            <input type="text" name="jenis_lapangan" class="form-control" value="{{ $katlap->jenis_lapangan }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

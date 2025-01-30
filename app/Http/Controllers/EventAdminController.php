@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventAdminController extends Controller
 {
@@ -29,15 +30,8 @@ class EventAdminController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
     
-        if($request->hasFile('image')) {
-            $originalName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('BattleImage', $originalName, 'public');
-            $validated['image'] = $path;
-        }
-    
-        $event = Event::create($validated);
-    
-        return redirect()->route('events.index', compact('event'))->with('success', 'Event created successfully.');
+        Alert::success('Success', 'Event created successfully.');
+        return redirect()->route('events.index', compact('event'));
     }
 
     public function show(Event $event)
@@ -69,19 +63,26 @@ class EventAdminController extends Controller
             }
 
             $originalName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('PaketJasa', $originalName, 'public');
+            $path = $request->file('image')->storeAs('BattleImage', $originalName, 'public');
             $validated['image'] = $path;
         }
     
         $event->update($validated);
 
-        return redirect()->route('events.index')->with('success', 'Event updated successfully.');
+        Alert::success('Success', 'Event updated successfully.');
+        return redirect()->route('events.index');
     }
 
 
     public function destroy(Event $event)
     {
+        if ($event->image && Storage::disk('public')->exists($event->image)) {
+            Storage::disk('public')->delete($event->image);
+        }
+
         $event->delete();
+
+        Alert::success('Success', 'Event deleted successfully.');
         return redirect()->route('events.index');
     }
 

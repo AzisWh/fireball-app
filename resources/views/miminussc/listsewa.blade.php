@@ -1,11 +1,11 @@
 <!-- resources/views/admin/layout/home.blade.php -->
-@extends('miminussc.layout.app')
+@extends('miminussc.layout.layout')
 
 @section('title', 'List Penyewaan')
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="mt-5">
+    <div class="">
         <h3>Riwayat Pemesanan</h3>
         
         <form method="GET" class="mb-3">

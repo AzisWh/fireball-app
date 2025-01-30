@@ -8,6 +8,7 @@ use App\Models\LapanganTempat;
 use App\Models\Mitra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LapanganController extends Controller
 {
@@ -35,21 +36,26 @@ class LapanganController extends Controller
             'jenis_id' => 'required',
         ]);
 
-        DB::beginTransaction();
+        try {
+            DB::beginTransaction();
 
-        $lapangan = Lapangan::create($request->all());
-        for($i=0;$i<$request->jumlah_lapangan;$i++) {
-            $inc_lapangan = $i+1;
-            LapanganTempat::create([
-                'lapangan_id' => $lapangan->id,
-                'nama_tempat' => "Lapangan {$inc_lapangan}",
-            ]);
+            $lapangan = Lapangan::create($request->all());
+            for ($i = 0; $i < $request->jumlah_lapangan; $i++) {
+                $inc_lapangan = $i + 1;
+                LapanganTempat::create([
+                    'lapangan_id' => $lapangan->id,
+                    'nama_tempat' => "Lapangan {$inc_lapangan}",
+                ]);
+            }
+
+            DB::commit();
+            Alert::success('Berhasil', 'Lapangan berhasil ditambahkan.');
+            return redirect()->route('lapangan.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Alert::error('Gagal', 'Terjadi kesalahan saat menambahkan lapangan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-
-        DB::commit();
-        // dd($request->all());
-
-        return redirect()->route('lapangan.index')->with('success', 'Lapangan created successfully.');
     }
 
     public function edit(Lapangan $lapangan)
@@ -70,20 +76,31 @@ class LapanganController extends Controller
             'jenis_id' => 'required',
         ]);
 
-        $lapangan->update($request->all());
-
-        return redirect()->route('lapangan.index')->with('success', 'Lapangan updated successfully.');
+        try {
+            $lapangan->update($request->all());
+            Alert::success('Berhasil', 'Lapangan berhasil diperbarui.');
+            return redirect()->route('lapangan.index');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat memperbarui lapangan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
 
     public function destroy(Lapangan $lapangan)
     {
         
-        $lapangan->lapanganTempats()->delete();
-        // $lapangan->mitra()->delete();
-        // $lapangan->kategori()->delete();
-        // $lapangan->hargaoption()->delete();
-        $lapangan->delete();
+        try {
+            $lapangan->lapanganTempats()->delete();
+            // $lapangan->mitra()->delete();
+            // $lapangan->kategori()->delete();
+            // $lapangan->hargaoption()->delete();
+            $lapangan->delete();
 
-        return redirect()->route('lapangan.index')->with('success', 'Lapangan deleted successfully.');
+            Alert::success('Berhasil', 'Lapangan berhasil dihapus.');
+            return redirect()->route('lapangan.index');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat menghapus lapangan: ' . $e->getMessage());
+            return redirect()->back();
+        }
     }
 }

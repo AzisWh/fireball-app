@@ -37,7 +37,6 @@
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" data-aos="fade-left">
           <form action="{{ route('register') }}" method="POST">
             @csrf
-            <!-- Name input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="name">Nama</label>
               <input type="name" id="name" name="name" class="form-control form-control-lg @error('name') is-invalid @enderror"
@@ -49,7 +48,6 @@
               @enderror
             </div>
 
-            <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="email">Email address</label>
               <input type="email" id="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror"
@@ -61,7 +59,6 @@
               @enderror
             </div>
 
-            <!-- Password input -->
             <div class="form-outline mb-3">
               <label class="form-label" for="password">Password</label>
               <input type="password" id="password" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror"

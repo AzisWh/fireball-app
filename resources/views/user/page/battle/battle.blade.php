@@ -26,13 +26,13 @@
             </div>
 
             <div class="container mt-4">
-                @if(session('success'))
+                @if (session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
-        
-                @if(session('error'))
+
+                @if (session('error'))
                     <div class="alert alert-danger">
                         {{ session('error') }}
                     </div>
@@ -46,23 +46,27 @@
                             <div class="card-body">
                                 <h3 class="card-title">{{ $event->name }}</h3>
                                 <p class="card-text">{{ $event->description }}</p>
-                                <p><strong>Start Date:</strong> {{ $event->start_date }} | <strong>End Date:</strong> {{ $event->end_date }}</p>
+                                <p><strong>Start Date:</strong> {{ $event->start_date }} | <strong>End Date:</strong>
+                                    {{ $event->end_date }}</p>
 
-                                @foreach($event->activities as $activity)
+                                @foreach ($event->activities as $activity)
                                     <div class="activity mb-3">
                                         <h5>{{ $activity->name }}</h5>
                                         <p>{{ $activity->description }}</p>
-                                        {{-- <p>sisa slot : {{ $activity->slot }} tim</p>
-                                        <p>Harga: Rp {{ number_format($activity->price, 2) }}</p> --}}
-                                        
-                                        @if(auth()->check())
+                                        <p>sisa slot : {{ $activity->slot }} tim</p>
+                                        <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>
+
+                                        @if (auth()->check())
                                             @php
-                                               $isRegistered = $activity->battle_transaksis && $activity->battle_transaksis->contains('user_id', auth()->id());
+                                                $isRegistered =
+                                                    $activity->battle_transaksis &&
+                                                    $activity->battle_transaksis->contains('user_id', auth()->id());
                                             @endphp
 
-                                            <form action="{{ route('activities.register', $activity->id) }}" method="POST">
+                                            <form action="{{ route('activity.payment', $activity->id) }}" method="GET">
                                                 @csrf
-                                                <button type="submit" class="btn btn-primary btn-sm" {{ $isRegistered ? 'disabled' : '' }}>
+                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                    {{ $isRegistered ? 'disabled' : '' }}>
                                                     {{ $isRegistered ? 'ANDA SUDAH MENDAFTAR' : 'DAFTAR' }}
                                                 </button>
                                             </form>
@@ -90,7 +94,7 @@
                 @forelse ($upcomingEvents as $event)
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="card h-100 shadow-sm">
-                            @if($event->image)
+                            @if ($event->image)
                                 <img src="{{ asset('storage/'.$event->image) }}" alt="{{ $event->name }}" class="card-img-top img-fluid rounded">
                             @endif
                             <div class="card-body">
@@ -98,14 +102,14 @@
                                 <p class="card-text">{{ $event->description }}</p>
                                 <p><strong>Start Date:</strong> {{ $event->start_date }} | <strong>End Date:</strong> {{ $event->end_date }}</p>
 
-                                @foreach($event->activities as $activity)
+                                @foreach ($event->activities as $activity)
                                     <div class="activity mb-3">
                                         <h5>{{ $activity->name }}</h5>
                                         <p>{{ $activity->description }}</p>
                                         <p>sisa slot : {{ $activity->slot }} tim</p>
                                         <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>
                                         
-                                        @if(auth()->check())
+                                        @if (auth()->check())
                                             @php
                                                $isRegistered = $activity->battle_transaksis && $activity->battle_transaksis->contains('user_id', auth()->id());
                                             @endphp
@@ -145,19 +149,20 @@
                 @forelse ($finishedEvents as $event)
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="card h-100 shadow-sm">
-                            {{-- @if($event->image)
+                            {{-- @if ($event->image)
                                 <img src="{{ asset('storage/'.$event->image) }}" alt="{{ $event->name }}" class="card-img-top img-fluid rounded" >
                             @endif --}}
                             <div class="card-body">
                                 <h3 class="card-title">{{ $event->name }}</h3>
                                 <p class="card-text">{{ $event->description }}</p>
-                                <p><strong>Start Date:</strong> {{ $event->start_date }} | <strong>End Date:</strong> {{ $event->end_date }}</p>
-                                
-                                @foreach($event->activities as $activity)
+                                <p><strong>Start Date:</strong> {{ $event->start_date }} | <strong>End Date:</strong>
+                                    {{ $event->end_date }}</p>
+
+                                @foreach ($event->activities as $activity)
                                     <div class="activity mb-3">
                                         <h5>{{ $activity->name }}</h5>
                                         <p>{{ $activity->description }}</p>
-                                        <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>   
+                                        <p>Harga: Rp {{ number_format($activity->price, 2) }}</p>
                                     </div>
                                 @endforeach
                             </div>

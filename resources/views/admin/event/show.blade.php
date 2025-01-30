@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('admin.layout.layout')
 
 @section('title', 'Detail Event')
 

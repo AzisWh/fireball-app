@@ -1,5 +1,5 @@
 <!-- resources/views/admin/layout/home.blade.php -->
-@extends('miminussc.layout.app')
+@extends('miminussc.layout.layout')
 
 @section('title', 'Dashboard Ussc')
 

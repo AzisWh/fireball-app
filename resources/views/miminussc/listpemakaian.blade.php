@@ -1,5 +1,5 @@
 <!-- resources/views/admin/layout/home.blade.php -->
-@extends('miminussc.layout.app')
+@extends('miminussc.layout.layout')
 
 @section('title', 'Tambah Booking Ussc')
 
@@ -64,6 +64,15 @@
       // const tax = 4000;
 
       function get_jam() {
+        if ($("#lapangan_tempat_id").val() === "pilih") {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Lapangan Belum Dipilih',
+            text: 'Harap pilih lapangan terlebih dahulu untuk melihat jam yang tersedia.',
+          });
+          return; 
+        }
+
         console.log($("#lapangan_tempat_id").val(), $("#tanggal").val());
         $.ajax({
           url: "{{ route('miminussc.jam') }}",

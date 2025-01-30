@@ -45,9 +45,9 @@
                     <div class="card mx-auto" style="width: 24rem;">
                         {{-- <img src="{{ asset('assets/img/event/poster.jpeg') }}" class="card-img-top" alt="..."> --}}
                         <div class="card-body">
-                            <p>Nama Mitra : {{$item->mitra->namamitra}}</p>
-                            <h5 class="card-title">Nama Lapangan : {{$item->nama_lapangan}}</h5>
-                            <h5 class="card-title">Lokasi Lapangan : {{$item->lokasi_lapangan}}</h5>
+                            <p>Mitra : {{$item->mitra->namamitra}}</p>
+                            <p class="card-title" >Nama Lapangan : {{$item->nama_lapangan}}</p>
+                            <p class="card-title">Lokasi Lapangan : {{$item->lokasi_lapangan}}</p>
                         </div>
                     </div>
                 </a>

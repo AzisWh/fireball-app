@@ -1,5 +1,4 @@
-<!-- resources/views/admin/mitras/index.blade.php -->
-@extends('admin.layout.app')
+@extends('admin.layout.layout')
 
 @section('title', 'Harga Opsi Lapangan')
 

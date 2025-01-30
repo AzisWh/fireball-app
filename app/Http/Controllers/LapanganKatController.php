@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KategoriLapangan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LapanganKatController extends Controller
 {
@@ -24,9 +25,14 @@ class LapanganKatController extends Controller
             'jenis_lapangan' => 'required'
         ]);
 
-        KategoriLapangan::create($request->all());
+        try {
+            KategoriLapangan::create($request->all());
+            Alert::success('Sukses', 'Kategori berhasil dibuat.');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat membuat kategori.');
+        }
 
-        return redirect()->route('katlap.index')->with('success', 'Kategori created successfully.');
+        return redirect()->route('katlap.index');
     }
 
     public function edit(KategoriLapangan $katlap)
@@ -40,15 +46,25 @@ class LapanganKatController extends Controller
             'jenis_lapangan' => 'required'
         ]);
 
-        $katlap->update($request->all());
+        try {
+            $katlap->update($request->all());
+            Alert::success('Sukses', 'Kategori berhasil diperbarui.');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat memperbarui kategori.');
+        }
 
-        return redirect()->route('katlap.index')->with('success', 'Kategori updated successfully.');
+        return redirect()->route('katlap.index');
     }
 
     public function destroy(KategoriLapangan $katlap)
     {
-        $katlap->delete();
+        try {
+            $katlap->delete();
+            Alert::success('Sukses', 'Kategori berhasil dihapus.');
+        } catch (\Exception $e) {
+            Alert::error('Gagal', 'Kategori tidak dapat dihapus karena terhubung dengan data lain.');
+        }
 
-        return redirect()->route('katlap.index')->with('success', 'katlap deleted successfully.');
+        return redirect()->route('katlap.index');
     }
 }

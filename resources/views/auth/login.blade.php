@@ -38,22 +38,6 @@
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" data-aos="fade-left">
                 <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <!-- Email input -->
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="email">Email address</label>
-                        <input type="email" id="email" name="email" class="form-control form-control-lg"
-                            placeholder="Enter a valid email address" value="{{ old('email') }}" />
-                    </div>
-
-                    <!-- Password input -->
-                    <div data-mdb-input-init class="form-outline mb-3">
-                        <label class="form-label" for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control form-control-lg"
-                            placeholder="Enter password" />
-                    </div>
-
-                    <!-- Error message for invalid login -->
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0">
@@ -63,6 +47,19 @@
                             </ul>
                         </div>
                     @endif
+
+                    @csrf
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="email">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control form-control-lg"
+                            placeholder="Enter a valid email address" value="{{ old('email') }}" />
+                    </div>
+
+                    <div data-mdb-input-init class="form-outline mb-3">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control form-control-lg"
+                            placeholder="Enter password" />
+                    </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2">
                         <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
